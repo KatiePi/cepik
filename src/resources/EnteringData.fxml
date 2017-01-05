@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controllers.EnteringDataController">
+  <children>
+    <TabPane disable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" prefHeight="510.0" prefWidth="756.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1.7976931348623157E308">
+      <tabs>
+        <Tab text="Właściele">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label text="Imię" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+                  <font>
+                    <Font size="16.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <Label font="$x1" text="Nazwisko" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
+                <Label font="$x1" text="Pesel" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
+                <Label font="$x1" text="Miasto" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
+                <TextField fx:id="ownerNameTF" layoutY="50.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
+                <TextField fx:id="ownerLastnameTF" layoutY="100.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
+                <TextField fx:id="ownerPeselTF" layoutY="150.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
+                <TextField fx:id="ownerCityTF" layoutY="200.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
+                <Button id="addOwnersBT" font="$x1" layoutX="249.0" mnemonicParsing="false" onMouseClicked="#addOwnersClick" text="Wprowadź" AnchorPane.topAnchor="300.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Pojazdy">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label font="$x1" text="Rok produkcji" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+                <Label font="$x1" text="Numer rejestracyjny" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
+                <Label font="$x1" text="Marka" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
+                <Label font="$x1" text="Numer VIN" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
+                <TextField fx:id="vehicleRegNumTF" layoutY="100.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
+                <TextField fx:id="vehicleMarkTF" layoutY="150.0" prefWidth="200.0" AnchorPane.leftAnchor="251.0" />
+                <TextField fx:id="vehicleVinTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
+                <TextField fx:id="vehicleProdYearTF" layoutY="50.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
+                <Button id="addVehiclesBT" font="$x1" layoutX="249.0" mnemonicParsing="false" onMouseClicked="#addVechilesClick" text="Wprowadź" AnchorPane.topAnchor="300.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab onSelectionChanged="#documentsTabSelected" text="Dokumenty">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label font="$x1" text="Typ dokumentu" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+                <Label font="$x1" text="Pojazd" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
+                <Label font="$x1" text="Data wydania" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
+                <Label font="$x1" text="Data wygaśnięcia" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
+                <Label font="$x1" text="Opis" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="250.0" />
+                <ComboBox fx:id="docTypeCB" prefHeight="21.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList" />
+                  </items>
+                </ComboBox>
+                <ComboBox fx:id="docVehicleCB" prefHeight="21.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="100.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList" />
+                  </items>
+                </ComboBox>
+                <TextField fx:id="docStartDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
+                <TextField fx:id="docExpiryDateTF" layoutY="200.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
+                <TextField fx:id="docDescTF" layoutY="250.0" prefWidth="200.0" AnchorPane.leftAnchor="251.0" />
+                <Button id="addDocumentsBT" font="$x1" layoutX="249.0" mnemonicParsing="false" onMouseClicked="#addDocumentsClick" text="Wprowadź" AnchorPane.topAnchor="300.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab onSelectionChanged="#ownershipTabSelected" text="Przynależności">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label font="$x1" text="Właściciel" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+                <Label font="$x1" text="Pojazd" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
+                <Label font="$x1" text="Data wydania" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
+                <ComboBox fx:id="ownershipOwnerCB" prefHeight="21.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList" />
+                  </items>
+                </ComboBox>
+                <ComboBox fx:id="ownershipVehicleCB" prefHeight="21.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="100.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList" />
+                  </items>
+                </ComboBox>
+                <TextField fx:id="ownershipStartDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
+                <Button id="addOwnershipsBT" font="$x1" mnemonicParsing="false" onMouseClicked="#addOwnershipsClick" text="Wprowadź" AnchorPane.leftAnchor="249.0" AnchorPane.topAnchor="300.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+</VBox>
