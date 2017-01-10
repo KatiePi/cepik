@@ -167,7 +167,7 @@ public class EnteringDataController {
                 try {
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
                     Statement statement = connection.createStatement();
-                    statement.executeUpdate("INSERT INTO documents VALUES (DEFAULT, '"+startDate+"', + '', +  "+vehicleId+", "+ownerId+") ");
+                    statement.executeUpdate("INSERT INTO ownership VALUES (DEFAULT, '"+startDate+"', + '', +  "+vehicleId+", "+ownerId+") ");
                     connection.close();
                 } catch (Exception e) {
                     e.printStackTrace();

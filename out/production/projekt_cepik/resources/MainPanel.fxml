@@ -55,7 +55,11 @@
         </Tab>
         <Tab text="Straż graniczna">
           <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <fx:include source="GettingData.fxml" layoutX="0.0" layoutY="0.0" prefHeight="510.0" prefWidth="756.0" />
+              </children>
+            </AnchorPane>
           </content>
         </Tab>
       </tabs>
