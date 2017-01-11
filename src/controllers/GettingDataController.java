@@ -42,7 +42,7 @@ public class GettingDataController {
 
             try {
 
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                 data = FXCollections.observableArrayList();
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT firstname as 'NAzwisko', lastname, pesel, city FROM owner ");
@@ -90,7 +90,7 @@ public class GettingDataController {
         if(vehicleTab.isSelected()) {
             vehicleTV.getColumns().clear();
             try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                 data = FXCollections.observableArrayList();
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT v.ProductionYear, v.REgistrationNumber, v.VIN, m.Name FROM vehicle as v JOIN mark as m ON v.mark_idMark = m.idMark ");
@@ -139,7 +139,7 @@ public class GettingDataController {
 
             try {
 
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                 data = FXCollections.observableArrayList();
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT dt.Name, v.VIN, d.startDate, d.ExpireDate, d.description FROM documents as d left JOIN vehicle as v ON d.vehicle_idVehicle = v.idVehicle left join documentType as dt on dt.idDocumentType = d.documentType_idDocumentType");
@@ -187,7 +187,7 @@ public class GettingDataController {
 
             try {
 
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mydb", "newuser", "rozPass_123.");
                 data = FXCollections.observableArrayList();
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT o.lastname, o.firstname, v.VIN, os.startDate from ownership as os join owner as o on os.Owner_idOwner = o.idOwner join vehicle as v on v.idVehicle = os.Vehicle_idVehicle");

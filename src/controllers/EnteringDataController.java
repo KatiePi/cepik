@@ -12,6 +12,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import utils.DateValidator;
+import utils.PeselValidator;
+import utils.VinValidator;
+
 import java.sql.*;
 import java.util.Collection;
 import java.util.HashMap;
@@ -42,20 +46,25 @@ public class EnteringDataController {
 
     private Map<Integer, String> documentTypes;
     private Map<Integer, String> vehicles;
-    private Map<Integer, String> owners;
+    private HashMap<Integer, String> owners;
     private int vehicleMarkId = -1;
-
+    private PeselValidator peselValidator;
+    private VinValidator vinValidator;
+    private DateValidator dateValidator;
+    private DateValidator dateValidator2;
 
     @FXML
     void addOwnersClick(MouseEvent event) {
         String name = ownerNameTF.getText();
         String lastname = ownerLastnameTF.getText();
         String pesel = ownerPeselTF.getText();
+        peselValidator = new PeselValidator(pesel);
+        System.out.println(peselValidator.isValid());
         String city = ownerCityTF.getText();
 
-        if(name != "" && lastname != "" && pesel != "" && city != "") {
+        if(name.isEmpty() == false && lastname.isEmpty() == false && peselValidator.isValid() == true && city.isEmpty() == false) {
             try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                 Statement statement = connection.createStatement();
                 statement.executeUpdate("INSERT INTO owner VALUES  (DEFAULT, '"+name+"', '"+lastname+"', "+pesel+", '"+city+"')");
                 connection.close();
@@ -75,11 +84,13 @@ public class EnteringDataController {
         String RegNum = vehicleRegNumTF.getText();
         String Mark = vehicleMarkTF.getText();
         String Vin = vehicleVinTF.getText();
+        vinValidator = new VinValidator(Vin);
+        System.out.println(vinValidator.isValid());
 
 
-        if(prodYear != "" && RegNum != "" && Mark != "" && Vin != "") {
+        if(prodYear.isEmpty() != true && RegNum.isEmpty() != true && Mark.isEmpty() != true && vinValidator.isValid() == true) {
             try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                 Statement statement = connection.createStatement();
 
                 ResultSet result = statement.executeQuery("select * from mark");
@@ -110,7 +121,9 @@ public class EnteringDataController {
         String expiryDate = docExpiryDateTF.getText();
         String desc = docDescTF.getText();
 
-        if(docType != "" && vehicle != "" && startDate != "" && expiryDate != "" && desc != "") {
+        dateValidator = new DateValidator(startDate);
+        dateValidator2 = new DateValidator(expiryDate);
+        if(docType.isEmpty() != true && vehicle.isEmpty() != true && dateValidator.isValid() == true && dateValidator2.isValid()==true && desc.isEmpty() != true) {
             int docTypeId = -1;
             int vehicleId = -1;
 
@@ -126,7 +139,7 @@ public class EnteringDataController {
 
             if(docTypeId != -1 && vehicleId != -1) {
                 try {
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                     Statement statement = connection.createStatement();
                     statement.executeUpdate("INSERT INTO documents VALUES (DEFAULT, "+docTypeId+", '"+expiryDate+"', '"+startDate+"', '', '"+desc+"', "+vehicleId+")");
                     connection.close();
@@ -148,8 +161,8 @@ public class EnteringDataController {
         String owner = (String)ownershipOwnerCB.getValue();
         String vehicle = (String)ownershipVehicleCB.getValue();
         String startDate = ownershipStartDateTF.getText();
-
-        if(owner != "" && vehicle != "" && startDate != "") {
+        dateValidator = new DateValidator(startDate);
+        if(owner.isEmpty() != true && vehicle.isEmpty() != true && dateValidator.isValid() == true) {
             int ownerId = -1;
             int vehicleId = -1;
 
@@ -165,7 +178,7 @@ public class EnteringDataController {
 
             if(ownerId != -1 && vehicleId != -1) {
                 try {
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                     Statement statement = connection.createStatement();
                     statement.executeUpdate("INSERT INTO ownership VALUES (DEFAULT, '"+startDate+"', + '', +  "+vehicleId+", "+ownerId+") ");
                     connection.close();
@@ -204,7 +217,7 @@ public class EnteringDataController {
 
     void setDocumentsTabComboBoxes() {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("select * from documenttype");
             while(result.next())
@@ -217,14 +230,19 @@ public class EnteringDataController {
 
             docTypeCB.getItems().clear();
 
-            for(int i = 1; i <= documentTypes.size(); i++)
-                docTypeCB.getItems().add(documentTypes.get(i));
+//            for(int i = 1; i <= documentTypes.size(); i++)
+//                docTypeCB.getItems().add(documentTypes.get(i));
+//
+            for (int key : documentTypes.keySet())
+                docTypeCB.getItems().add(documentTypes.get(key));
 
 
             docVehicleCB.getItems().clear();
 
-            for(int i = 1; i <= vehicles.size(); i++)
-                docVehicleCB.getItems().add(vehicles.get(i));
+
+
+            for (int key : vehicles.keySet())
+                docVehicleCB.getItems().add(vehicles.get(key));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -233,12 +251,11 @@ public class EnteringDataController {
 
     void setOwnershipTabComboBoxes() {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("select * from owner");
-
             while(result.next())
-                owners.put(result.getInt("idOwner"), result.getString("Firstname") + " " + result.getString("Lastname") + " " + result.getString("Pesel") );
+                owners.put(result.getInt("idOwner"), result.getString("Firstname") + " " + result.getString("Lastname") + " " + result.getString("Pesel"));
 
             result = statement.executeQuery("select * from vehicle");
 
@@ -246,15 +263,18 @@ public class EnteringDataController {
                 vehicles.put(result.getInt("idVehicle"), result.getString("VIN"));
 
             ownershipOwnerCB.getItems().clear();
-
-            for(int i = 1; i <= owners.size(); i++)
-                ownershipOwnerCB.getItems().add(owners.get(i));
-
+       //     System.out.println("Wypisanie Owners "  + owners);
+            for (int key : owners.keySet())
+                ownershipOwnerCB.getItems().add(owners.get(key));
 
             ownershipVehicleCB.getItems().clear();
 
-            for(int i = 1; i <= vehicles.size(); i++)
-                ownershipVehicleCB.getItems().add(vehicles.get(i));
+    //        for(int i = 1; i <= vehicles.size(); i++)
+    //            ownershipVehicleCB.getItems().add(vehicles.get(i));
+
+            for (int key : vehicles.keySet())
+                ownershipVehicleCB.getItems().add(vehicles.get(key));
+
 
         } catch (Exception e) {
             e.printStackTrace();
