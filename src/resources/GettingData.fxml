@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controllers.GettingDataController">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GettingDataController">
   <children>
     <TabPane disable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" prefHeight="510.0" prefWidth="756.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1.7976931348623157E308">
       <tabs>
@@ -40,7 +37,7 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <TableView fx:id="documentTV" columnResizePolicy="$x1" layoutY="46.0" prefHeight="356.0" prefWidth="600.0">
+                <TableView fx:id="documentTV" columnResizePolicy="$x1" layoutY="46.0" prefHeight="356.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                   <columns>
                     <TableColumn prefWidth="75.0" text="Typ dokumentu" />
                     <TableColumn prefWidth="95.0" text="Pojazd" />
@@ -57,7 +54,7 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <TableView fx:id="ownershipTV" columnResizePolicy="$x1" layoutY="51.0" prefHeight="328.0" prefWidth="600.0">
+                <TableView fx:id="ownershipTV" columnResizePolicy="$x1" layoutY="51.0" prefHeight="328.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                   <columns>
                     <TableColumn prefWidth="75.0" text="Właściciel" />
                     <TableColumn prefWidth="75.0" text="Pojazd" />

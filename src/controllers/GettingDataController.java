@@ -15,10 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.sql.*;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class GettingDataController {
 
@@ -33,6 +30,10 @@ public class GettingDataController {
     @FXML
     private TableView ownershipTV;
 
+    private LinkedList<String> ownerTVcolNames = new LinkedList<String>(Arrays.asList("Imię","Nazwisko","Pesel","Miasto"));
+    private LinkedList<String> vehicleTVcolNames = new LinkedList<String>(Arrays.asList("Rok produkcji","Numer rejestracyjny","Numer VIN","Marka"));
+    private LinkedList<String> documentTVcolNames = new LinkedList<String>(Arrays.asList("Typ dokumentu","Numer VIN","Data wystawienia","Data ważności","Opis"));
+    private LinkedList<String> ownershipTVcolNames = new LinkedList<String>(Arrays.asList("Imię","Nazwisko","Numer Vin","Data wystawienia"));
     @FXML
     void ownerTabSelected(Event event) {
         Tab ownerTab = (Tab)event.getTarget();
@@ -45,18 +46,19 @@ public class GettingDataController {
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                 data = FXCollections.observableArrayList();
                 Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT firstname as 'NAzwisko', lastname, pesel, city FROM owner ");
+                ResultSet rs = statement.executeQuery("SELECT firstname, lastname, pesel, city FROM owner ");
 
                 for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
                     //We are using non property style for making dynamic table
                     final int j = i;
                     TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                  //  System.out.println("Hello " + col.getText());
                     col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){
                         public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
                             return new SimpleStringProperty(param.getValue().get(j).toString());
                         }
                     });
-
+                    col.setText(ownerTVcolNames.get(i));
                     ownerTV.getColumns().addAll(col);
                     System.out.println("Column ["+i+"] ");
                 }
@@ -104,6 +106,7 @@ public class GettingDataController {
                         }
                     });
 
+                    col.setText(vehicleTVcolNames.get(i));
                     vehicleTV.getColumns().addAll(col);
                     System.out.println("Column ["+i+"] ");
                 }
@@ -153,6 +156,7 @@ public class GettingDataController {
                         }
                     });
 
+                    col.setText(documentTVcolNames.get(i));
                     documentTV.getColumns().addAll(col);
                     System.out.println("Column ["+i+"] ");
                 }
@@ -200,7 +204,7 @@ public class GettingDataController {
                             return new SimpleStringProperty(param.getValue().get(j).toString());
                         }
                     });
-
+                    col.setText(ownershipTVcolNames.get(i));
                     ownershipTV.getColumns().addAll(col);
                     System.out.println("Column ["+i+"] ");
                 }

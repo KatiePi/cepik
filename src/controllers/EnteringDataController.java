@@ -9,6 +9,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -23,6 +24,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class EnteringDataController {
+    @FXML private Label incorrectDataLabel3;
+    @FXML private Label incorrectDataLabel2;
+    @FXML private Label incorrectDataLabel1;
     @FXML TextField ownerNameTF;
     @FXML TextField ownerLastnameTF;
     @FXML TextField ownerPeselTF;
@@ -43,6 +47,8 @@ public class EnteringDataController {
     @FXML ComboBox docVehicleCB;
     @FXML ComboBox ownershipOwnerCB;
     @FXML ComboBox ownershipVehicleCB;
+    @FXML
+    private Label incorrectDataLabel;
 
     private Map<Integer, String> documentTypes;
     private Map<Integer, String> vehicles;
@@ -52,6 +58,16 @@ public class EnteringDataController {
     private VinValidator vinValidator;
     private DateValidator dateValidator;
     private DateValidator dateValidator2;
+
+
+    public void initialize() {
+        // TODO Auto-generated method stub
+        incorrectDataLabel.setVisible(false);
+        incorrectDataLabel1.setVisible(false);
+        incorrectDataLabel2.setVisible(false);
+        incorrectDataLabel3.setVisible(false);
+    }
+
 
     @FXML
     void addOwnersClick(MouseEvent event) {
@@ -63,7 +79,9 @@ public class EnteringDataController {
         String city = ownerCityTF.getText();
 
         if(name.isEmpty() == false && lastname.isEmpty() == false && peselValidator.isValid() == true && city.isEmpty() == false) {
+
             try {
+                incorrectDataLabel.setVisible(false);
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                 Statement statement = connection.createStatement();
                 statement.executeUpdate("INSERT INTO owner VALUES  (DEFAULT, '"+name+"', '"+lastname+"', "+pesel+", '"+city+"')");
@@ -76,6 +94,7 @@ public class EnteringDataController {
             ownerPeselTF.clear();
             ownerCityTF.clear();
         }
+        else incorrectDataLabel.setVisible(true);
     }
 
     @FXML
@@ -90,6 +109,7 @@ public class EnteringDataController {
 
         if(prodYear.isEmpty() != true && RegNum.isEmpty() != true && Mark.isEmpty() != true && vinValidator.isValid() == true) {
             try {
+                incorrectDataLabel1.setVisible(false);
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                 Statement statement = connection.createStatement();
 
@@ -110,7 +130,8 @@ public class EnteringDataController {
             vehicleRegNumTF.clear();
             vehicleMarkTF.clear();
             vehicleVinTF.clear();
-        }
+        }        else incorrectDataLabel1.setVisible(true);
+
     }
 
     @FXML
@@ -139,6 +160,7 @@ public class EnteringDataController {
 
             if(docTypeId != -1 && vehicleId != -1) {
                 try {
+                    incorrectDataLabel2.setVisible(false);
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                     Statement statement = connection.createStatement();
                     statement.executeUpdate("INSERT INTO documents VALUES (DEFAULT, "+docTypeId+", '"+expiryDate+"', '"+startDate+"', '', '"+desc+"', "+vehicleId+")");
@@ -153,7 +175,8 @@ public class EnteringDataController {
             docStartDateTF.clear();
             docExpiryDateTF.clear();
             docDescTF.clear();
-        }
+        }        else incorrectDataLabel2.setVisible(true);
+
     }
 
     @FXML
@@ -178,6 +201,7 @@ public class EnteringDataController {
 
             if(ownerId != -1 && vehicleId != -1) {
                 try {
+                    incorrectDataLabel3.setVisible(false);
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
                     Statement statement = connection.createStatement();
                     statement.executeUpdate("INSERT INTO ownership VALUES (DEFAULT, '"+startDate+"', + '', +  "+vehicleId+", "+ownerId+") ");
@@ -190,7 +214,8 @@ public class EnteringDataController {
             setOwnershipTabComboBoxes();
 
             ownershipStartDateTF.clear();
-        }
+        }        else incorrectDataLabel3.setVisible(true);
+
     }
 
     @FXML
