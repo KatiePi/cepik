@@ -29,7 +29,7 @@ public class MainPanelController {
     }
 
     @FXML
-    void policeTabOnSelectionChanged(){
+    public void policeTabOnSelectionChanged(){
         System.out.println("DZIALA TYLKO GDY NACISNIESZ NA TAB");
         System.out.println("DZIALA TYLKO GDY NACISNIESZ NA TAB");
         System.out.println("DZIALA TYLKO GDY NACISNIESZ NA TAB");
@@ -38,9 +38,5 @@ public class MainPanelController {
 
     }
 
-
-    public void setMainController(PoliceController policeController) {
-        this.policeController = policeController;
-    }
 }
 

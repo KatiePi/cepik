@@ -24,21 +24,9 @@ public class PoliceController {
     public ObservableList<ObservableList> data;
 
     @FXML
-    private TableView ownerTV;
-    @FXML
-    private TableView vehicleTV;
-    @FXML
-    private TableView documentTV;
-    @FXML
-    private TableView ownershipTV;
-    @FXML
     public TableView referralTV;
 
 
-    private LinkedList<String> ownerTVcolNames = new LinkedList<String>(Arrays.asList("Imię","Nazwisko","Pesel","Miasto"));
-    private LinkedList<String> vehicleTVcolNames = new LinkedList<String>(Arrays.asList("Rok produkcji","Numer rejestracyjny","Numer VIN","Marka"));
-    private LinkedList<String> documentTVcolNames = new LinkedList<String>(Arrays.asList("Typ dokumentu","Numer VIN","Data wystawienia","Data ważności","Opis"));
-    private LinkedList<String> ownershipTVcolNames = new LinkedList<String>(Arrays.asList("Imię","Nazwisko","Numer Vin","Data wystawienia"));
     public LinkedList<String> referralTVcolNames = new LinkedList<String>(Arrays.asList("Typ dokumentu","Numer VIN","Data wystawienia","Data ważności","Opis"));
 
     @FXML
@@ -55,158 +43,6 @@ public class PoliceController {
 
 
 
-
-
-
-
-
-    @FXML
-    void ownerTabSelected(Event event) {
-        Tab ownerTab = (Tab)event.getTarget();
-
-        if(ownerTab.isSelected()) {
-            ownerTV.getColumns().clear();
-
-            try {
-
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
-                data = FXCollections.observableArrayList();
-                Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT firstname, lastname, pesel, city FROM owner ");
-
-                for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
-                    //We are using non property style for making dynamic table
-                    final int j = i;
-                    TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                    //  System.out.println("Hello " + col.getText());
-                    col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                            return new SimpleStringProperty(param.getValue().get(j).toString());
-                        }
-                    });
-                    col.setText(ownerTVcolNames.get(i));
-                    ownerTV.getColumns().addAll(col);
-                    System.out.println("Column ["+i+"] ");
-                }
-
-                while(rs.next()){
-                    //Iterate Row
-                    ObservableList<String> row = FXCollections.observableArrayList();
-                    for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){
-                        //Iterate Column
-                        row.add(rs.getString(i));
-                        System.out.println(rs.getString(i));
-                    }
-                    System.out.println("Row [1] added "+row );
-                    data.add(row);
-
-                }
-                //FINALLY ADDED TO TableView
-                ownerTV.setItems(data);
-                connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-    @FXML
-    void vehicleTabSelected(Event event) {
-        Tab vehicleTab = (Tab)event.getTarget();
-
-        if(vehicleTab.isSelected()) {
-            vehicleTV.getColumns().clear();
-            try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
-                data = FXCollections.observableArrayList();
-                Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT v.ProductionYear, v.REgistrationNumber, v.VIN, m.Name FROM vehicle as v JOIN mark as m ON v.mark_idMark = m.idMark ");
-                for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
-                    //We are using non property style for making dynamic table
-                    final int j = i;
-                    TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                    col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                            return new SimpleStringProperty(param.getValue().get(j).toString());
-                        }
-                    });
-
-                    col.setText(vehicleTVcolNames.get(i));
-                    vehicleTV.getColumns().addAll(col);
-                    System.out.println("Column ["+i+"] ");
-                }
-
-                while(rs.next()){
-                    //Iterate Row
-                    ObservableList<String> row = FXCollections.observableArrayList();
-                    for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){
-                        //Iterate Column
-                        row.add(rs.getString(i));
-                        System.out.println(rs.getString(i));
-                    }
-                    System.out.println("Row [1] added "+row );
-                    data.add(row);
-
-                }
-                //FINALLY ADDED TO TableView
-                vehicleTV.setItems(data);
-                connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @FXML
-    void documentsTabSelected(Event event) {
-        Tab documentsTab = (Tab)event.getTarget();
-
-        if(documentsTab.isSelected()) {
-
-            documentTV.getColumns().clear();
-
-            try {
-
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
-                data = FXCollections.observableArrayList();
-                Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT dt.Name, v.VIN, d.startDate, d.ExpireDate, d.description FROM documents as d left JOIN vehicle as v ON d.vehicle_idVehicle = v.idVehicle left join documentType as dt on dt.idDocumentType = d.documentType_idDocumentType");
-                for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
-                    //We are using non property style for making dynamic table
-                    final int j = i;
-                    TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                    col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){
-                        public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                            return new SimpleStringProperty(param.getValue().get(j).toString());
-                        }
-                    });
-
-                    col.setText(documentTVcolNames.get(i));
-                    documentTV.getColumns().addAll(col);
-                    System.out.println("Column ["+i+"] ");
-                }
-
-                while(rs.next()){
-                    //Iterate Row
-                    ObservableList<String> row = FXCollections.observableArrayList();
-                    for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){
-                        //Iterate Column
-                        row.add(rs.getString(i));
-                        System.out.println(rs.getString(i));
-                    }
-                    System.out.println("Row [1] added "+row );
-                    data.add(row);
-
-                }
-                //FINALLY ADDED TO TableView
-                documentTV.setItems(data);
-                connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
 
 
@@ -257,14 +93,15 @@ public class PoliceController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+
+
+
+        FXMLLoader mainFXMLLoader = new FXMLLoader(getClass().getResource("../resources/MainPanel.fxml"));
+        System.out.println("Main fxmlloader tutaj: " + mainFXMLLoader.toString());
+        System.out.println(mainFXMLLoader.<MainPanelController>getController());
+    }
   //  }
     TabPane tabPane;
 
-    private void initialize() {
-        mainController.setMainController(this);
-
-
-    }
 
 }
