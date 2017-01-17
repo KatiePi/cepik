@@ -8,17 +8,8 @@
 
 <VBox prefHeight="549.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainPanelController">
   <children>
-    <TabPane prefWidth="756.0" tabClosingPolicy="UNAVAILABLE">
+    <TabPane fx:id="tabPane" prefWidth="756.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
-        <Tab text="Policjant">
-          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <fx:include source="Police.fxml" />
-                     </children>
-            </AnchorPane>
-          </content>
-        </Tab>
         <Tab text="Starosta">
           <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="510.0" prefWidth="626.0">
@@ -27,6 +18,15 @@
               </padding>
                      <children>
                         <fx:include source="Foreman.fxml" />
+                     </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab fx:id="tab" onSelectionChanged="#policeTabOnSelectionChanged" text="Policjant">
+          <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <fx:include fx:id="police" source="Police.fxml" />
                      </children>
             </AnchorPane>
           </content>

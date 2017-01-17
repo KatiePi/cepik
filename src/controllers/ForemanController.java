@@ -27,15 +27,7 @@ public class ForemanController {
     @FXML private Label incorrectDataLabel3;
     @FXML private Label incorrectDataLabel2;
     @FXML private Label incorrectDataLabel1;
-    @FXML TextField ownerNameTF;
-    @FXML TextField ownerLastnameTF;
-    @FXML TextField ownerPeselTF;
-    @FXML TextField ownerCityTF;
 
-    @FXML TextField vehicleProdYearTF;
-    @FXML TextField vehicleRegNumTF;
-    @FXML TextField vehicleMarkTF;
-    @FXML TextField vehicleVinTF;
 
     @FXML TextField docStartDateTF;
     @FXML TextField docExpiryDateTF;
@@ -54,7 +46,7 @@ public class ForemanController {
     private Map<Integer, String> vehicles;
     private HashMap<Integer, String> owners;
     private int vehicleMarkId = -1;
-    private PeselValidator peselValidator;
+
     private VinValidator vinValidator;
     private DateValidator dateValidator;
     private DateValidator dateValidator2;
@@ -62,77 +54,12 @@ public class ForemanController {
 
     public void initialize() {
         // TODO Auto-generated method stub
-        incorrectDataLabel.setVisible(false);
-        incorrectDataLabel1.setVisible(false);
+
         incorrectDataLabel2.setVisible(false);
-        incorrectDataLabel3.setVisible(false);
-    }
-
-
-    @FXML
-    void addOwnersClick(MouseEvent event) {
-        String name = ownerNameTF.getText();
-        String lastname = ownerLastnameTF.getText();
-        String pesel = ownerPeselTF.getText();
-        peselValidator = new PeselValidator(pesel);
-        System.out.println(peselValidator.isValid());
-        String city = ownerCityTF.getText();
-
-        if(name.isEmpty() == false && lastname.isEmpty() == false && peselValidator.isValid() == true && city.isEmpty() == false) {
-
-            try {
-                incorrectDataLabel.setVisible(false);
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("INSERT INTO owner VALUES  (DEFAULT, '"+name+"', '"+lastname+"', "+pesel+", '"+city+"')");
-                connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            ownerNameTF.clear();
-            ownerLastnameTF.clear();
-            ownerPeselTF.clear();
-            ownerCityTF.clear();
-        }
-        else incorrectDataLabel.setVisible(true);
-    }
-
-    @FXML
-    void addVechilesClick(MouseEvent event) {
-        String prodYear = vehicleProdYearTF.getText();
-        String RegNum = vehicleRegNumTF.getText();
-        String Mark = vehicleMarkTF.getText();
-        String Vin = vehicleVinTF.getText();
-        vinValidator = new VinValidator(Vin);
-        System.out.println(vinValidator.isValid());
-
-
-        if(prodYear.isEmpty() != true && RegNum.isEmpty() != true && Mark.isEmpty() != true && vinValidator.isValid() == true) {
-            try {
-                incorrectDataLabel1.setVisible(false);
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
-                Statement statement = connection.createStatement();
-
-                ResultSet result = statement.executeQuery("select * from mark");
-                while(result.next()){
-                    if(result.getString("Name").equals(Mark))
-                        vehicleMarkId = result.getInt("idMark");
-                }
-
-                System.out.print("MArkaaa is" + vehicleMarkId);
-
-                statement.executeUpdate("INSERT INTO vehicle VALUES  (DEFAULT, '"+prodYear+"', '"+RegNum+"', "+vehicleMarkId+", '"+Vin+"')");
-                connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            vehicleProdYearTF.clear();
-            vehicleRegNumTF.clear();
-            vehicleMarkTF.clear();
-            vehicleVinTF.clear();
-        }        else incorrectDataLabel1.setVisible(true);
 
     }
+
+
 
     @FXML
     void addDocumentsClick(MouseEvent event) {
@@ -179,44 +106,6 @@ public class ForemanController {
 
     }
 
-    @FXML
-    void addOwnershipsClick(MouseEvent event) {
-        String owner = (String)ownershipOwnerCB.getValue();
-        String vehicle = (String)ownershipVehicleCB.getValue();
-        String startDate = ownershipStartDateTF.getText();
-        dateValidator = new DateValidator(startDate);
-        if(owner.isEmpty() != true && vehicle.isEmpty() != true && dateValidator.isValid() == true) {
-            int ownerId = -1;
-            int vehicleId = -1;
-
-            for(Map.Entry<Integer, String> e : owners.entrySet()) {
-                if(e.getValue() == owner)
-                    ownerId = e.getKey();
-            }
-
-            for(Map.Entry<Integer, String> e : vehicles.entrySet()) {
-                if(e.getValue() == vehicle)
-                    vehicleId = e.getKey();
-            }
-
-            if(ownerId != -1 && vehicleId != -1) {
-                try {
-                    incorrectDataLabel3.setVisible(false);
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
-                    Statement statement = connection.createStatement();
-                    statement.executeUpdate("INSERT INTO ownership VALUES (DEFAULT, '"+startDate+"', + '', +  "+vehicleId+", "+ownerId+") ");
-                    connection.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            setOwnershipTabComboBoxes();
-
-            ownershipStartDateTF.clear();
-        }        else incorrectDataLabel3.setVisible(true);
-
-    }
 
     @FXML
     void documentsTabSelected(Event event) {
@@ -229,22 +118,13 @@ public class ForemanController {
         }
     }
 
-    @FXML
-    void ownershipTabSelected(Event event) {
-        Tab ownershipTab = (Tab)event.getTarget();
-        owners = new HashMap<>();
-        vehicles = new HashMap<>();
 
-        if(ownershipTab.isSelected()) {
-            setOwnershipTabComboBoxes();
-        }
-    }
 
     void setDocumentsTabComboBoxes() {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("select * from documenttype");
+            ResultSet result = statement.executeQuery("select * from documenttype where documenttype.name='Skierowanie na badanie techniczne'");
             while(result.next())
                 documentTypes.put(result.getInt("idDocumentType"), result.getString("Name"));
 
@@ -274,42 +154,5 @@ public class ForemanController {
         }
     }
 
-    void setOwnershipTabComboBoxes() {
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("select * from owner");
-            while(result.next())
-                owners.put(result.getInt("idOwner"), result.getString("Firstname") + " " + result.getString("Lastname") + " " + result.getString("Pesel"));
 
-            result = statement.executeQuery("select * from vehicle");
-
-            while(result.next())
-                vehicles.put(result.getInt("idVehicle"), result.getString("VIN"));
-
-            ownershipOwnerCB.getItems().clear();
-            //     System.out.println("Wypisanie Owners "  + owners);
-            for (int key : owners.keySet())
-                ownershipOwnerCB.getItems().add(owners.get(key));
-
-            ownershipVehicleCB.getItems().clear();
-
-            //        for(int i = 1; i <= vehicles.size(); i++)
-            //            ownershipVehicleCB.getItems().add(vehicles.get(i));
-
-            for (int key : vehicles.keySet())
-                ownershipVehicleCB.getItems().add(vehicles.get(key));
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-    @FXML
-    void issueReferralTabSelected() {
-    //TODO !!!
-    }
 }

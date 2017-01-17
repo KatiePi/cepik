@@ -15,51 +15,14 @@
    <children>
       <TabPane disable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" prefHeight="468.0" prefWidth="807.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1.7976931348623157E308">
          <tabs>
-            <Tab text="Właściele">
+            <Tab onSelectionChanged="#documentsTabSelected" text="Wystaw skierowanie na badanie">
                <content>
                   <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label text="Imię" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+                        <Label text="Typ dokumentu" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
                            <font>
                               <Font size="16.0" fx:id="x1" />
-                           </font>
-                        </Label>
-                        <Label font="$x1" text="Nazwisko" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
-                        <Label font="$x1" text="Pesel" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
-                        <Label font="$x1" text="Miasto" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
-                        <TextField fx:id="ownerNameTF" layoutY="50.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
-                        <TextField fx:id="ownerLastnameTF" layoutY="100.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
-                        <TextField fx:id="ownerPeselTF" layoutY="150.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
-                        <TextField fx:id="ownerCityTF" layoutY="200.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
-                        <Button id="addOwnersBT" font="$x1" layoutX="249.0" mnemonicParsing="false" onMouseClicked="#addOwnersClick" text="Wprowadź" AnchorPane.topAnchor="300.0" />
-                        <Label fx:id="incorrectDataLabel" layoutX="184.0" layoutY="369.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="Pojazdy">
-               <content>
-                  <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label font="$x1" text="Rok produkcji" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
-                        <Label font="$x1" text="Numer rejestracyjny" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
-                        <Label font="$x1" text="Marka" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
-                        <Label font="$x1" text="Numer VIN" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
-                        <TextField fx:id="vehicleRegNumTF" layoutY="100.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
-                        <TextField fx:id="vehicleMarkTF" layoutY="150.0" prefWidth="200.0" AnchorPane.leftAnchor="251.0" />
-                        <TextField fx:id="vehicleVinTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
-                        <TextField fx:id="vehicleProdYearTF" layoutY="50.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
-                        <Button id="addVehiclesBT" font="$x1" layoutX="249.0" mnemonicParsing="false" onMouseClicked="#addVechilesClick" text="Wprowadź" AnchorPane.topAnchor="300.0" />
-                        <Label fx:id="incorrectDataLabel1" layoutX="194.0" layoutY="379.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab onSelectionChanged="#documentsTabSelected" text="Dokumenty">
-               <content>
-                  <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label font="$x1" text="Typ dokumentu" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+                           </font></Label>
                         <Label font="$x1" text="Pojazd" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
                         <Label font="$x1" text="Data wydania" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
                         <Label font="$x1" text="Data wygaśnięcia" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
@@ -82,35 +45,6 @@
                      </children>
                   </AnchorPane>
                </content>
-            </Tab>
-            <Tab onSelectionChanged="#ownershipTabSelected" text="Przynależności">
-               <content>
-                  <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label font="$x1" text="Właściciel" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
-                        <Label font="$x1" text="Pojazd" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
-                        <Label font="$x1" text="Data wydania" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
-                        <ComboBox fx:id="ownershipOwnerCB" prefHeight="21.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="50.0">
-                           <items>
-                              <FXCollections fx:factory="observableArrayList" />
-                           </items>
-                        </ComboBox>
-                        <ComboBox fx:id="ownershipVehicleCB" prefHeight="21.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="100.0">
-                           <items>
-                              <FXCollections fx:factory="observableArrayList" />
-                           </items>
-                        </ComboBox>
-                        <TextField fx:id="ownershipStartDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
-                        <Button id="addOwnershipsBT" font="$x1" mnemonicParsing="false" onMouseClicked="#addOwnershipsClick" text="Wprowadź" AnchorPane.leftAnchor="249.0" AnchorPane.topAnchor="300.0" />
-                        <Label fx:id="incorrectDataLabel3" layoutX="194.0" layoutY="379.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab onSelectionChanged="#issueReferralTabSelected" text="Wystaw skierowanie na badanie">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
             </Tab>
          </tabs>
       </TabPane>
