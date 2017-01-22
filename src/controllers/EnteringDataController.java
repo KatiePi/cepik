@@ -41,14 +41,20 @@ public class EnteringDataController {
     @FXML TextField docExpiryDateTF;
     @FXML TextField docDescTF;
 
+    @FXML TextField updateOwnerNameTF;
+    @FXML TextField updateOwnerLastnameTF;
+    @FXML TextField updateOwnerPeselTF;
+    @FXML TextField updateOwnerCityTF;
+
     @FXML TextField ownershipStartDateTF;
 
     @FXML ComboBox docTypeCB;
     @FXML ComboBox docVehicleCB;
     @FXML ComboBox ownershipOwnerCB;
     @FXML ComboBox ownershipVehicleCB;
-    @FXML
-    private Label incorrectDataLabel;
+    @FXML ComboBox updateOwnerCB;
+
+    @FXML private Label incorrectDataLabel;
 
     private Map<Integer, String> documentTypes;
     private Map<Integer, String> vehicles;
@@ -58,6 +64,9 @@ public class EnteringDataController {
     private VinValidator vinValidator;
     private DateValidator dateValidator;
     private DateValidator dateValidator2;
+    private String user = "root";
+    private String password = "admin";
+    private int updateOwnerId;
 
 
     public void initialize() {
@@ -82,7 +91,7 @@ public class EnteringDataController {
 
             try {
                 incorrectDataLabel.setVisible(false);
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb",  user, password);
                 Statement statement = connection.createStatement();
                 statement.executeUpdate("INSERT INTO owner VALUES  (DEFAULT, '"+name+"', '"+lastname+"', "+pesel+", '"+city+"')");
                 connection.close();
@@ -110,7 +119,7 @@ public class EnteringDataController {
         if(prodYear.isEmpty() != true && RegNum.isEmpty() != true && Mark.isEmpty() != true && vinValidator.isValid() == true) {
             try {
                 incorrectDataLabel1.setVisible(false);
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
                 Statement statement = connection.createStatement();
 
                 ResultSet result = statement.executeQuery("select * from mark");
@@ -161,9 +170,9 @@ public class EnteringDataController {
             if(docTypeId != -1 && vehicleId != -1) {
                 try {
                     incorrectDataLabel2.setVisible(false);
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
                     Statement statement = connection.createStatement();
-                    statement.executeUpdate("INSERT INTO documents VALUES (DEFAULT, "+docTypeId+", '"+expiryDate+"', '"+startDate+"', '', '"+desc+"', "+vehicleId+")");
+                    statement.executeUpdate("INSERT INTO documents VALUES (DEFAULT, "+docTypeId+", '"+expiryDate+"', '"+startDate+"', '"+desc+"', "+vehicleId+")");
                     connection.close();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -202,9 +211,9 @@ public class EnteringDataController {
             if(ownerId != -1 && vehicleId != -1) {
                 try {
                     incorrectDataLabel3.setVisible(false);
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
                     Statement statement = connection.createStatement();
-                    statement.executeUpdate("INSERT INTO ownership VALUES (DEFAULT, '"+startDate+"', + '', +  "+vehicleId+", "+ownerId+") ");
+                    statement.executeUpdate("INSERT INTO ownership VALUES (DEFAULT, '"+startDate+"', +  "+vehicleId+", "+ownerId+") ");
                     connection.close();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -240,9 +249,19 @@ public class EnteringDataController {
         }
     }
 
+    @FXML
+    void updateOwnerTabSelected(Event event) {
+        Tab updateOwnerTab = (Tab)event.getTarget();
+        owners = new HashMap<>();
+
+        if(updateOwnerTab.isSelected()) {
+            setUpdateOwnerComboBoxes();
+        }
+    }
+
     void setDocumentsTabComboBoxes() {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("select * from documenttype");
             while(result.next())
@@ -276,7 +295,7 @@ public class EnteringDataController {
 
     void setOwnershipTabComboBoxes() {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("select * from owner");
             while(result.next())
@@ -288,7 +307,6 @@ public class EnteringDataController {
                 vehicles.put(result.getInt("idVehicle"), result.getString("VIN"));
 
             ownershipOwnerCB.getItems().clear();
-       //     System.out.println("Wypisanie Owners "  + owners);
             for (int key : owners.keySet())
                 ownershipOwnerCB.getItems().add(owners.get(key));
 
@@ -304,5 +322,76 @@ public class EnteringDataController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setUpdateOwnerComboBoxes(){
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("select * from owner");
+            while(result.next())
+                owners.put(result.getInt("idOwner"), result.getString("Firstname") + ' ' +  result.getString("Lastname") + ' ' + result.getString("City") + ' ' + result.getString("Pesel"));
+
+            updateOwnerCB.getItems().clear();
+            for (int key : owners.keySet())
+                updateOwnerCB.getItems().add(owners.get(key));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setDataOwnerLabels(){
+        updateOwnerId = -1;
+        String owner = (String)updateOwnerCB.getValue();
+        for(Map.Entry<Integer, String> e : owners.entrySet()) {
+            if(e.getValue() == owner)
+                updateOwnerId = e.getKey();
+        }
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("select * from owner where owner.idOwner = " + updateOwnerId);
+            while(result.next()){
+                updateOwnerNameTF.setText(result.getString("Firstname"));
+                updateOwnerLastnameTF.setText(result.getString("Lastname"));
+                updateOwnerPeselTF.setText(result.getString("PESEL"));
+                updateOwnerCityTF.setText(result.getString("City"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void updateOwnerOnMouseClicked(MouseEvent event){
+        String name = updateOwnerNameTF.getText();
+        String lastname = updateOwnerLastnameTF.getText();
+        String pesel = updateOwnerPeselTF.getText();
+        peselValidator = new PeselValidator(pesel);
+        String city = updateOwnerCityTF.getText();
+        if(name.isEmpty() == false && lastname.isEmpty() == false && peselValidator.isValid() == true && city.isEmpty() == false) {
+
+            try {
+                incorrectDataLabel.setVisible(false);
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb",  user, password);
+                Statement statement = connection.createStatement();
+                statement.executeUpdate("UPDATE owner set firstname ='"+name+"', lastname ='"+lastname+"', PESEL ="+pesel+", city ='"+city+ "' where idOwner =" + updateOwnerId);
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            updateOwnerNameTF.clear();
+            updateOwnerLastnameTF.clear();
+            updateOwnerPeselTF.clear();
+            updateOwnerCityTF.clear();
+        }
+        else incorrectDataLabel.setVisible(true);
+        setUpdateOwnerComboBoxes();
+    }
+
+    @FXML
+    public void updateOwnerCBOnAction(){
+        setDataOwnerLabels();
     }
 }

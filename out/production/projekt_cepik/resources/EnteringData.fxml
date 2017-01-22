@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EnteringDataController">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controllers.EnteringDataController">
   <children>
     <TabPane disable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" prefHeight="510.0" prefWidth="756.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1.7976931348623157E308">
       <tabs>
@@ -27,12 +32,12 @@
                 <Label font="$x1" text="Nazwisko" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
                 <Label font="$x1" text="Pesel" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
                 <Label font="$x1" text="Miasto" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
-                <TextField fx:id="ownerNameTF" layoutY="50.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
+                <TextField fx:id="ownerNameTF" layoutY="50.0" prefWidth="200.0" text="" AnchorPane.leftAnchor="250.0" />
                 <TextField fx:id="ownerLastnameTF" layoutY="100.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
                 <TextField fx:id="ownerPeselTF" layoutY="150.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
                 <TextField fx:id="ownerCityTF" layoutY="200.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
                 <Button id="addOwnersBT" font="$x1" layoutX="249.0" mnemonicParsing="false" onMouseClicked="#addOwnersClick" text="Wprowadź" AnchorPane.topAnchor="300.0" />
-                        <Label fx:id="incorrectDataLabel" layoutX="184.0" layoutY="369.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
+                <Label fx:id="incorrectDataLabel" layoutX="184.0" layoutY="369.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
               </children>
             </AnchorPane>
           </content>
@@ -50,7 +55,7 @@
                 <TextField fx:id="vehicleVinTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
                 <TextField fx:id="vehicleProdYearTF" layoutY="50.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
                 <Button id="addVehiclesBT" font="$x1" layoutX="249.0" mnemonicParsing="false" onMouseClicked="#addVechilesClick" text="Wprowadź" AnchorPane.topAnchor="300.0" />
-                        <Label fx:id="incorrectDataLabel1" layoutX="194.0" layoutY="379.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
+                <Label fx:id="incorrectDataLabel1" layoutX="194.0" layoutY="379.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
               </children>
             </AnchorPane>
           </content>
@@ -78,7 +83,7 @@
                 <TextField fx:id="docExpiryDateTF" layoutY="200.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" />
                 <TextField fx:id="docDescTF" layoutY="250.0" prefWidth="200.0" AnchorPane.leftAnchor="251.0" />
                 <Button id="addDocumentsBT" font="$x1" layoutX="249.0" mnemonicParsing="false" onMouseClicked="#addDocumentsClick" text="Wprowadź" AnchorPane.topAnchor="300.0" />
-                        <Label fx:id="incorrectDataLabel2" layoutX="194.0" layoutY="379.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
+                <Label fx:id="incorrectDataLabel2" layoutX="194.0" layoutY="379.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
               </children>
             </AnchorPane>
           </content>
@@ -102,9 +107,51 @@
                 </ComboBox>
                 <TextField fx:id="ownershipStartDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
                 <Button id="addOwnershipsBT" font="$x1" mnemonicParsing="false" onMouseClicked="#addOwnershipsClick" text="Wprowadź" AnchorPane.leftAnchor="249.0" AnchorPane.topAnchor="300.0" />
-                        <Label fx:id="incorrectDataLabel3" layoutX="194.0" layoutY="379.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
+                <Label fx:id="incorrectDataLabel3" layoutX="194.0" layoutY="379.0" text="Wprowadzono niepoprawne dane." textFill="RED" />
               </children>
             </AnchorPane>
+          </content>
+        </Tab>
+        <Tab onSelectionChanged="#updateOwnerTabSelected" text="Aktualizuj wlaściciela">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <ComboBox id="ownerCB" fx:id="updateOwnerCB" onAction="#updateOwnerCBOnAction" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Label font="$x1" text="Wybierz właściciela" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+                <Label font="$x1" text="Imię" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
+                <Label font="$x1" text="Nazwisko" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
+                <Label font="$x1" text="Pesel" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
+                <Label font="$x1" text="Miasto" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="250.0" />
+                <TextField id="name" fx:id="updateOwnerNameTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="100.0" />
+                <TextField id="ownerLastnameTF" fx:id="updateOwnerLastnameTF" prefWidth="200.0" AnchorPane.leftAnchor="249.0" AnchorPane.topAnchor="150.0" />
+                <TextField id="ownerPeselTF" fx:id="updateOwnerPeselTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
+                <TextField id="ownerCityTF" fx:id="updateOwnerCityTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="250.0" />
+                <Button font="$x1" mnemonicParsing="false" onMouseClicked="#updateOwnerOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="249.0" AnchorPane.topAnchor="300.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Aktualizuj pojazd">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          </content>
+        </Tab>
+        <Tab text="Aktualizuj dokument">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          </content>
+        </Tab>
+        <Tab text="Aktualizuj przynależność">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
           </content>
         </Tab>
       </tabs>

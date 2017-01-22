@@ -53,7 +53,7 @@ public class PoliceController {
 
             referralTV.getColumns().clear();
             try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "admin");
                 data = FXCollections.observableArrayList();
                 Statement statement = connection.createStatement();
                 //ResultSet rs = statement.executeQuery("SELECT v.ProductionYear, v.REgistrationNumber, v.VIN, m.Name FROM vehicle as v JOIN mark as m ON v.mark_idMark = m.idMark ");

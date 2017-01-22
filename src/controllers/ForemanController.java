@@ -50,6 +50,8 @@ public class ForemanController {
     private VinValidator vinValidator;
     private DateValidator dateValidator;
     private DateValidator dateValidator2;
+    private String user = "root";
+    private String password = "admin";
 
 
     public void initialize() {
@@ -88,9 +90,9 @@ public class ForemanController {
             if(docTypeId != -1 && vehicleId != -1) {
                 try {
                     incorrectDataLabel2.setVisible(false);
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
                     Statement statement = connection.createStatement();
-                    statement.executeUpdate("INSERT INTO documents VALUES (DEFAULT, "+docTypeId+", '"+expiryDate+"', '"+startDate+"', '', '"+desc+"', "+vehicleId+")");
+                    statement.executeUpdate("INSERT INTO documents VALUES (DEFAULT, "+docTypeId+", '"+expiryDate+"', '"+startDate+"', '"+desc+"', "+vehicleId+")");
                     connection.close();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -122,7 +124,7 @@ public class ForemanController {
 
     void setDocumentsTabComboBoxes() {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "newuser", "rozPass_123.");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("select * from documenttype where documenttype.name='Skierowanie na badanie techniczne'");
             while(result.next())
