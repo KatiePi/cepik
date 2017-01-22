@@ -134,24 +134,90 @@
                 <TextField id="ownerLastnameTF" fx:id="updateOwnerLastnameTF" prefWidth="200.0" AnchorPane.leftAnchor="249.0" AnchorPane.topAnchor="150.0" />
                 <TextField id="ownerPeselTF" fx:id="updateOwnerPeselTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
                 <TextField id="ownerCityTF" fx:id="updateOwnerCityTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="250.0" />
-                <Button font="$x1" mnemonicParsing="false" onMouseClicked="#updateOwnerOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="249.0" AnchorPane.topAnchor="300.0" />
+                <Button font="$x1" mnemonicParsing="false" onMouseClicked="#updateOwnerOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="300.0" />
               </children>
             </AnchorPane>
           </content>
         </Tab>
-        <Tab text="Aktualizuj pojazd">
+        <Tab onSelectionChanged="#updateVehicleTabSelected" text="Aktualizuj pojazd">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <ComboBox fx:id="updateVehicleCB" onAction="#updateVehicleCBOnAction" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Label font="$x1" text="Rok produkcji" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="101.0" />
+                <Label font="$x1" text="Numer rejestracyjny" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="151.0" />
+                <Label font="$x1" text="Numer VIN" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="201.0" />
+                <Label font="$x1" text="Marka" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="250.0" />
+                <Label font="$x1" prefWidth="128.0" text="Wybierz pojazd" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="51.0" />
+                <TextField fx:id="updateProductionYearTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="100.0" />
+                <TextField fx:id="updateRegistrationNumberTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
+                <TextField fx:id="updateVINnumberTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
+                <TextField fx:id="updateMarkTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="250.0" />
+                <Button fx:id="updateVehicleButton" font="$x1" mnemonicParsing="false" onAction="#updateVehicleButtonOnAction" onMouseClicked="#updateOwnerOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="300.0" />
+              </children>
+            </AnchorPane>
           </content>
         </Tab>
-        <Tab text="Aktualizuj dokument">
+        <Tab onSelectionChanged="#updateDocumentTabSelected" text="Aktualizuj dokument">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <ComboBox id="updateDocumentOnAction" fx:id="updateDocumentCB" onAction="#updateDocumentCBOnAction" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Label font="$x1" text="Wybierz dokument" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+                <Label font="$x1" text="Typ dokumentu" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
+                <Label font="$x1" text="Data wydania" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
+                <Label font="$x1" text="Data wygaśnięcia" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
+                <Label font="$x1" text="Opis" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="250.0" />
+                <Label font="$x1" text="Pojazd" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="300.0" />
+                <TextField id="updateDescriptionTF" fx:id="updateDocDescriptionTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="250.0" />
+                <TextField id="updateVehicleTF" fx:id="updateDocVehicleTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="300.0" />
+                <TextField id="updateProductionYearTF" fx:id="updateDocExpireDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
+                <TextField id="updateExpireDateTF" fx:id="updateDocStartDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
+                <TextField fx:id="updateDocTypeTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="100.0" />
+                <Button fx:id="updateVehicleButton" font="$x1" mnemonicParsing="false" onAction="#updateVehicleButtonOnAction" onMouseClicked="#updateOwnerOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="350.0" />
+              </children>
+            </AnchorPane>
           </content>
         </Tab>
-        <Tab text="Aktualizuj przynależność">
+        <Tab onSelectionChanged="#updateOwnershipTabSelected" text="Aktualizuj przynależność">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <ComboBox fx:id="updateOwnershipCB" onAction="#updateOwnershipCBOnAction" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="50.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+                <Label font="$x1" text="Wybierz przynależność" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+                <Label font="$x1" text="Właściciel" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
+                <Label font="$x1" text="Pojazd" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0" />
+                <Label font="$x1" text="Data wydania" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="200.0" />
+                <TextField fx:id="updateOwnerTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="100.0" />
+                <TextField fx:id="updateVehicleTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
+                <TextField fx:id="updateStartDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
+                <Button fx:id="updateVehicleButton" font="$x1" mnemonicParsing="false" onAction="#updateVehicleButtonOnAction" onMouseClicked="#updateOwnerOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="300.0" />
+              </children>
+            </AnchorPane>
           </content>
         </Tab>
       </tabs>

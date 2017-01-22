@@ -77,6 +77,41 @@
             </AnchorPane>
           </content>
         </Tab>
+        <Tab onSelectionChanged="#updateVehicleTabSelected" text="Historia pojazdów">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TableView fx:id="updateVehicleTV" layoutX="0.0" layoutY="0.0" prefHeight="437.0000999999975" prefWidth="600.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab onSelectionChanged="#updateDocumentTabSelected" text="Historia dokumentów">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TableView fx:id="updateDocumentTV" layoutX="0.0" layoutY="0.0" prefHeight="437.0" prefWidth="600.0000999999975">
+                  <columns>
+                    <TableColumn prefWidth="75.0" text="Column X" />
+                  </columns>
+                </TableView>
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab onSelectionChanged="#updateOwnershipTabSelected" text="Historia przynajeżności">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TableView fx:id="updateOwnershipTV" layoutX="0.0" layoutY="0.0" prefHeight="437.0" prefWidth="600.0">
+                  <columns>
+                    <TableColumn prefWidth="75.0" text="Column X" />
+                  </columns>
+                </TableView>
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
       </tabs>
     </TabPane>
   </children>

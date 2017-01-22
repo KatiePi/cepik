@@ -46,6 +46,17 @@ public class EnteringDataController {
     @FXML TextField updateOwnerPeselTF;
     @FXML TextField updateOwnerCityTF;
 
+    @FXML TextField updateProductionYearTF;
+    @FXML TextField updateRegistrationNumberTF;
+    @FXML TextField updateVINnumberTF;
+    @FXML TextField updateMarkTF;
+
+    @FXML TextField updateDocTypeTF;
+    @FXML TextField updateDocStartDateTF;
+    @FXML TextField updateDocExpireDateTF;
+    @FXML TextField updateDocDescriptionTF;
+    @FXML TextField updateDocVehicleTF;
+
     @FXML TextField ownershipStartDateTF;
 
     @FXML ComboBox docTypeCB;
@@ -53,6 +64,9 @@ public class EnteringDataController {
     @FXML ComboBox ownershipOwnerCB;
     @FXML ComboBox ownershipVehicleCB;
     @FXML ComboBox updateOwnerCB;
+    @FXML ComboBox updateVehicleCB;
+    @FXML ComboBox updateDocumentCB;
+    @FXML ComboBox updateOwnershipCB;
 
     @FXML private Label incorrectDataLabel;
 
@@ -67,6 +81,7 @@ public class EnteringDataController {
     private String user = "root";
     private String password = "admin";
     private int updateOwnerId;
+    private int updateVehicleId;
 
 
     public void initialize() {
@@ -259,6 +274,36 @@ public class EnteringDataController {
         }
     }
 
+    @FXML
+    void updateVehicleTabSelected(Event event) {
+        Tab updateVehicleTab = (Tab)event.getTarget();
+        vehicles = new HashMap<>();
+
+        if(updateVehicleTab.isSelected()) {
+            setUpdateVehicleComboBoxes();
+        }
+    }
+
+    @FXML
+    void updateDocumentTabSelected(Event event) {
+        /*Tab updateVehicleTab = (Tab)event.getTarget();
+        vehicles = new HashMap<>();
+
+        if(updateVehicleTab.isSelected()) {
+            setUpdateVehicleComboBoxes();
+        }*/
+    }
+
+    @FXML
+    void updateOwnershipTabSelected(Event event) {
+        /*Tab updateVehicleTab = (Tab)event.getTarget();
+        vehicles = new HashMap<>();
+
+        if(updateVehicleTab.isSelected()) {
+            setUpdateVehicleComboBoxes();
+        }*/
+    }
+
     void setDocumentsTabComboBoxes() {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
@@ -393,5 +438,242 @@ public class EnteringDataController {
     @FXML
     public void updateOwnerCBOnAction(){
         setDataOwnerLabels();
+    }
+
+    public void setUpdateVehicleComboBoxes(){
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("select * from vehicle");
+
+            while(result.next())
+                vehicles.put(result.getInt("idVehicle"), result.getString("RegistrationNumber") + ' ' +  result.getString("VIN") +  result.getString("ProductionYear"));
+
+            updateVehicleCB.getItems().clear();
+            for (int key : vehicles.keySet())
+                updateVehicleCB.getItems().add(vehicles.get(key));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setDataVehicleLabels(){
+        updateVehicleId = -1;
+        String vehicle = (String)updateVehicleCB.getValue();
+        for(Map.Entry<Integer, String> e : vehicles.entrySet()) {
+            if(e.getValue() == vehicle)
+                updateVehicleId = e.getKey();
+        }
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
+            Statement statement = connection.createStatement();
+
+            ResultSet result = statement.executeQuery("select * from vehicle where vehicle.idVehicle =" + updateVehicleId);
+            while(result.next()){
+                updateProductionYearTF.setText(result.getString("ProductionYear"));
+                updateRegistrationNumberTF.setText(result.getString("RegistrationNumber"));
+                updateVINnumberTF.setText(result.getString("VIN"));
+                updateMarkTF.setText(result.getString("Mark"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void updateVehicleButtonOnAction(MouseEvent event){
+        String productionYear = updateProductionYearTF.getText();
+        String registrationNumber = updateRegistrationNumberTF.getText();
+        String vin = updateVINnumberTF.getText();
+        vinValidator = new VinValidator(vin);
+        String mark = updateMarkTF.getText();
+        if(productionYear.isEmpty() == false && registrationNumber.isEmpty() == false && vinValidator.isValid() == true && mark.isEmpty() == false) {
+
+            try {
+                incorrectDataLabel.setVisible(false);
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb",  user, password);
+                Statement statement = connection.createStatement();
+
+                ResultSet result = statement.executeQuery("select * from mark");
+                while(result.next()){
+                    if(result.getString("Name").equals(mark))
+                        vehicleMarkId = result.getInt("idMark");
+                }
+
+                statement.executeUpdate("UPDATE vehicle set productionYear ='"+productionYear+"', registrationNumber ='"+registrationNumber+"', vin ="+vin+", mark ='"+vehicleMarkId+ "' where idVehicle =" + updateVehicleId);
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            updateProductionYearTF.clear();
+            updateRegistrationNumberTF.clear();
+            updateVINnumberTF.clear();
+            updateMarkTF.clear();
+        }
+        else incorrectDataLabel.setVisible(true);
+        setUpdateVehicleComboBoxes();
+    }
+
+    @FXML
+    public void updateVehicleCBOnAction(){
+        setDataVehicleLabels();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void setUpdateDocumentComboBoxes(){
+       /* try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("select * from vehicle");
+            while(result.next())
+                vehicles.put(result.getInt("idVehicle"), result.getString("RegistrationNumber") + ' ' +  result.getString("VIN") + ' ' + result.getString("Mark") + ' ' + result.getString("ProductionYear"));
+
+            updateVehicleCB.getItems().clear();
+            for (int key : vehicles.keySet())
+                updateVehicleCB.getItems().add(vehicles.get(key));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setDataDocumentLabels(){
+        updateVehicleId = -1;
+        String vehicle = (String)updateVehicleCB.getValue();
+        for(Map.Entry<Integer, String> e : vehicles.entrySet()) {
+            if(e.getValue() == vehicle)
+                updateVehicleId = e.getKey();
+        }
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("select * from vehicle where vehicle.idVehicle = " + updateVehicleId);
+            while(result.next()){
+                updateProductionYearTF.setText(result.getString("ProductionYear"));
+                updateRegistrationNumberTF.setText(result.getString("RegistrationNumber"));
+                updateVINnumberTF.setText(result.getString("VIN"));
+                updateMarkTF.setText(result.getString("Mark"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    }
+
+    @FXML
+    public void updateDocumentButtonOnAction(MouseEvent event){
+       /* String productionYear = updateProductionYearTF.getText();
+        String registrationNumber = updateRegistrationNumberTF.getText();
+        String vin = updateVINnumberTF.getText();
+        vinValidator = new VinValidator(vin);
+        String mark = updateMarkTF.getText();
+        if(productionYear.isEmpty() == false && registrationNumber.isEmpty() == false && vinValidator.isValid() == true && mark.isEmpty() == false) {
+
+            try {
+                incorrectDataLabel.setVisible(false);
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb",  user, password);
+                Statement statement = connection.createStatement();
+
+                ResultSet result = statement.executeQuery("select * from mark");
+                while(result.next()){
+                    if(result.getString("Name").equals(mark))
+                        vehicleMarkId = result.getInt("idMark");
+                }
+
+                statement.executeUpdate("UPDATE vehicle set productionYear ='"+productionYear+"', registrationNumber ='"+registrationNumber+"', vin ="+vin+", mark ='"+vehicleMarkId+ "' where idVehicle =" + updateVehicleId);
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            updateProductionYearTF.clear();
+            updateRegistrationNumberTF.clear();
+            updateVINnumberTF.clear();
+            updateMarkTF.clear();
+        }
+        else incorrectDataLabel.setVisible(true);
+        setUpdateVehicleComboBoxes();*/
+    }
+
+    @FXML
+    public void updateDocumentCBOnAction(){
+        //setDataDocumentLabels();
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void setUpdateOwnershipComboBoxes(){
+       /* try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("select * from vehicle");
+            while(result.next())
+                vehicles.put(result.getInt("idVehicle"), result.getString("RegistrationNumber") + ' ' +  result.getString("VIN") + ' ' + result.getString("Mark") + ' ' + result.getString("ProductionYear"));
+
+            updateVehicleCB.getItems().clear();
+            for (int key : vehicles.keySet())
+                updateVehicleCB.getItems().add(vehicles.get(key));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    }
+
+
+    public void setDataOwnershipLabels(){
+       /* updateVehicleId = -1;
+        String vehicle = (String)updateVehicleCB.getValue();
+        for(Map.Entry<Integer, String> e : vehicles.entrySet()) {
+            if(e.getValue() == vehicle)
+                updateVehicleId = e.getKey();
+        }
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("select * from vehicle where vehicle.idVehicle = " + updateVehicleId);
+            while(result.next()){
+                updateProductionYearTF.setText(result.getString("ProductionYear"));
+                updateRegistrationNumberTF.setText(result.getString("RegistrationNumber"));
+                updateVINnumberTF.setText(result.getString("VIN"));
+                updateMarkTF.setText(result.getString("Mark"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    }
+
+    @FXML
+    public void updateOwnershipButtonOnAction(MouseEvent event){
+       /* String productionYear = updateProductionYearTF.getText();
+        String registrationNumber = updateRegistrationNumberTF.getText();
+        String vin = updateVINnumberTF.getText();
+        vinValidator = new VinValidator(vin);
+        String mark = updateMarkTF.getText();
+        if(productionYear.isEmpty() == false && registrationNumber.isEmpty() == false && vinValidator.isValid() == true && mark.isEmpty() == false) {
+
+            try {
+                incorrectDataLabel.setVisible(false);
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb",  user, password);
+                Statement statement = connection.createStatement();
+
+                ResultSet result = statement.executeQuery("select * from mark");
+                while(result.next()){
+                    if(result.getString("Name").equals(mark))
+                        vehicleMarkId = result.getInt("idMark");
+                }
+
+                statement.executeUpdate("UPDATE vehicle set productionYear ='"+productionYear+"', registrationNumber ='"+registrationNumber+"', vin ="+vin+", mark ='"+vehicleMarkId+ "' where idVehicle =" + updateVehicleId);
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            updateProductionYearTF.clear();
+            updateRegistrationNumberTF.clear();
+            updateVINnumberTF.clear();
+            updateMarkTF.clear();
+        }
+        else incorrectDataLabel.setVisible(true);
+        setUpdateVehicleComboBoxes();*/
+    }
+
+    @FXML
+    public void updateOwnershipCBOnAction(){
+       // setDataOwnershipLabels();
     }
 }
