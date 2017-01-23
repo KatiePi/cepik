@@ -161,7 +161,7 @@
                 <TextField fx:id="updateRegistrationNumberTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
                 <TextField fx:id="updateVINnumberTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
                 <TextField fx:id="updateMarkTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="250.0" />
-                <Button fx:id="updateVehicleButton" font="$x1" mnemonicParsing="false" onAction="#updateVehicleButtonOnAction" onMouseClicked="#updateOwnerOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="300.0" />
+                <Button id="updateVehicleButton" font="$x1" mnemonicParsing="false" onMouseClicked="#updateVehicleOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="300.0" />
               </children>
             </AnchorPane>
           </content>
@@ -190,7 +190,7 @@
                 <TextField id="updateProductionYearTF" fx:id="updateDocExpireDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
                 <TextField id="updateExpireDateTF" fx:id="updateDocStartDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
                 <TextField fx:id="updateDocTypeTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="100.0" />
-                <Button fx:id="updateVehicleButton" font="$x1" mnemonicParsing="false" onAction="#updateVehicleButtonOnAction" onMouseClicked="#updateOwnerOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="350.0" />
+                <Button id="updateVehicleButton" font="$x1" mnemonicParsing="false" onMouseClicked="#updateDocumentsOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="350.0" />
               </children>
             </AnchorPane>
           </content>
@@ -215,7 +215,7 @@
                 <TextField fx:id="updateOwnerTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="100.0" />
                 <TextField fx:id="updateVehicleTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="150.0" />
                 <TextField fx:id="updateStartDateTF" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
-                <Button fx:id="updateVehicleButton" font="$x1" mnemonicParsing="false" onAction="#updateVehicleButtonOnAction" onMouseClicked="#updateOwnerOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="300.0" />
+                <Button id="updateVehicleButton" font="$x1" mnemonicParsing="false" onMouseClicked="#updateOwnershipOnMouseClicked" text="Zmień" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="300.0" />
               </children>
             </AnchorPane>
           </content>

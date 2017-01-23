@@ -58,6 +58,9 @@ public class EnteringDataController {
     @FXML TextField updateDocVehicleTF;
 
     @FXML TextField ownershipStartDateTF;
+    @FXML TextField updateStartDateTF;
+    @FXML TextField updateOwnerTF;
+    @FXML TextField updateVehicleTF;
 
     @FXML ComboBox docTypeCB;
     @FXML ComboBox docVehicleCB;
@@ -73,6 +76,7 @@ public class EnteringDataController {
     private Map<Integer, String> documentTypes;
     private Map<Integer, String> vehicles;
     private HashMap<Integer, String> owners;
+    private HashMap<Integer, String> ownership;
     private int vehicleMarkId = -1;
     private PeselValidator peselValidator;
     private VinValidator vinValidator;
@@ -82,6 +86,8 @@ public class EnteringDataController {
     private String password = "admin";
     private int updateOwnerId;
     private int updateVehicleId;
+    private int updateDocumentId;
+    private int updateOwnershipId;
 
 
     public void initialize() {
@@ -286,22 +292,22 @@ public class EnteringDataController {
 
     @FXML
     void updateDocumentTabSelected(Event event) {
-        /*Tab updateVehicleTab = (Tab)event.getTarget();
-        vehicles = new HashMap<>();
+        Tab updateDocTypeTab = (Tab)event.getTarget();
+        documentTypes = new HashMap<>();
 
-        if(updateVehicleTab.isSelected()) {
-            setUpdateVehicleComboBoxes();
-        }*/
+        if(updateDocTypeTab.isSelected()) {
+            setUpdateDocumentComboBoxes();
+        }
     }
 
     @FXML
     void updateOwnershipTabSelected(Event event) {
-        /*Tab updateVehicleTab = (Tab)event.getTarget();
-        vehicles = new HashMap<>();
+        Tab updateOwnershipTab = (Tab)event.getTarget();
+        ownership = new HashMap<>();
 
-        if(updateVehicleTab.isSelected()) {
-            setUpdateVehicleComboBoxes();
-        }*/
+        if(updateOwnershipTab.isSelected()) {
+            setUpdateOwnershipComboBoxes();
+        }
     }
 
     void setDocumentsTabComboBoxes() {
@@ -447,7 +453,7 @@ public class EnteringDataController {
             ResultSet result = statement.executeQuery("select * from vehicle");
 
             while(result.next())
-                vehicles.put(result.getInt("idVehicle"), result.getString("RegistrationNumber") + ' ' +  result.getString("VIN") +  result.getString("ProductionYear"));
+                vehicles.put(result.getInt("idVehicle"), result.getString("VIN"));
 
             updateVehicleCB.getItems().clear();
             for (int key : vehicles.keySet())
@@ -460,6 +466,7 @@ public class EnteringDataController {
 
     public void setDataVehicleLabels(){
         updateVehicleId = -1;
+        int markId = -1;
         String vehicle = (String)updateVehicleCB.getValue();
         for(Map.Entry<Integer, String> e : vehicles.entrySet()) {
             if(e.getValue() == vehicle)
@@ -474,7 +481,13 @@ public class EnteringDataController {
                 updateProductionYearTF.setText(result.getString("ProductionYear"));
                 updateRegistrationNumberTF.setText(result.getString("RegistrationNumber"));
                 updateVINnumberTF.setText(result.getString("VIN"));
-                updateMarkTF.setText(result.getString("Mark"));
+                markId = result.getInt("mark_idMark");
+            }
+
+            ResultSet markResult = statement.executeQuery("select * from mark");
+            while(markResult.next()){
+                if(markResult.getInt("idMark")==markId)
+                    updateMarkTF.setText(markResult.getString("Name"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -482,14 +495,14 @@ public class EnteringDataController {
     }
 
     @FXML
-    public void updateVehicleButtonOnAction(MouseEvent event){
+    public void updateVehicleOnMouseClicked(MouseEvent event){
         String productionYear = updateProductionYearTF.getText();
         String registrationNumber = updateRegistrationNumberTF.getText();
         String vin = updateVINnumberTF.getText();
         vinValidator = new VinValidator(vin);
         String mark = updateMarkTF.getText();
-        if(productionYear.isEmpty() == false && registrationNumber.isEmpty() == false && vinValidator.isValid() == true && mark.isEmpty() == false) {
 
+        if(productionYear.isEmpty() == false && registrationNumber.isEmpty() == false && vinValidator.isValid() == true && mark.isEmpty() == false) {
             try {
                 incorrectDataLabel.setVisible(false);
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb",  user, password);
@@ -500,8 +513,7 @@ public class EnteringDataController {
                     if(result.getString("Name").equals(mark))
                         vehicleMarkId = result.getInt("idMark");
                 }
-
-                statement.executeUpdate("UPDATE vehicle set productionYear ='"+productionYear+"', registrationNumber ='"+registrationNumber+"', vin ="+vin+", mark ='"+vehicleMarkId+ "' where idVehicle =" + updateVehicleId);
+                statement.executeUpdate("UPDATE vehicle set productionYear ='"+productionYear+"', registrationNumber ='"+registrationNumber+"', vin ='"+vin+"', mark_idMark ="+vehicleMarkId+" where idVehicle =" + updateVehicleId);
                 connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -520,18 +532,48 @@ public class EnteringDataController {
         setDataVehicleLabels();
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
     public void setUpdateDocumentComboBoxes(){
-       /* try {
+
+        Map<Integer, String> tempVehicles = new HashMap<Integer, String>();
+        Map<Integer, String> tempDocTYpe = new HashMap<Integer, String>();
+        int tmpVehicleId = -1;
+        int tmpDocTypeId = -1;
+
+        try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("select * from vehicle");
-            while(result.next())
-                vehicles.put(result.getInt("idVehicle"), result.getString("RegistrationNumber") + ' ' +  result.getString("VIN") + ' ' + result.getString("Mark") + ' ' + result.getString("ProductionYear"));
 
-            updateVehicleCB.getItems().clear();
-            for (int key : vehicles.keySet())
-                updateVehicleCB.getItems().add(vehicles.get(key));
+            ResultSet vahicleResult = statement.executeQuery("select * from vehicle");
+            while(vahicleResult.next()){
+                tempVehicles.put(vahicleResult.getInt("idVehicle"), vahicleResult.getString("VIN"));
+            }
+
+            ResultSet docTypeResult = statement.executeQuery("select * from documenttype");
+            while(docTypeResult.next()){
+                tempDocTYpe.put(docTypeResult.getInt("idDocumentType"), docTypeResult.getString("Name"));
+            }
+
+            ResultSet result = statement.executeQuery("select * from documents");
+            while(result.next()){
+                String vehicleValue = null;
+                String docTypeValue = null;
+
+                tmpVehicleId = result.getInt("Vehicle_idVehicle");
+                tmpDocTypeId = result.getInt("DocumentType_idDocumentType");
+
+                for(Map.Entry<Integer, String> e : tempVehicles.entrySet()) {
+                    if(e.getKey() == tmpVehicleId)
+                        vehicleValue = e.getValue();
+                }
+                for(Map.Entry<Integer, String> e : tempDocTYpe.entrySet()) {
+                    if(e.getKey() == tmpDocTypeId)
+                        docTypeValue = e.getValue();
+                }
+                documentTypes.put(result.getInt("idDocuments"),docTypeValue + " " + vehicleValue);
+            }
+            updateDocumentCB.getItems().clear();
+            for (int key : documentTypes.keySet())
+                updateDocumentCB.getItems().add(documentTypes.get(key));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -539,141 +581,213 @@ public class EnteringDataController {
 
 
     public void setDataDocumentLabels(){
-        updateVehicleId = -1;
-        String vehicle = (String)updateVehicleCB.getValue();
-        for(Map.Entry<Integer, String> e : vehicles.entrySet()) {
-            if(e.getValue() == vehicle)
-                updateVehicleId = e.getKey();
+        int docTypeid = -1;
+        int vehicleid = -1;
+        updateDocumentId = -1;
+        String document = (String)updateDocumentCB.getValue();
+        for(Map.Entry<Integer, String> e : documentTypes.entrySet()) {
+            if(e.getValue() == document)
+                updateDocumentId = e.getKey();
         }
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("select * from vehicle where vehicle.idVehicle = " + updateVehicleId);
+            ResultSet result = statement.executeQuery("select * from documents where documents.idDocuments = " + updateDocumentId);
             while(result.next()){
-                updateProductionYearTF.setText(result.getString("ProductionYear"));
-                updateRegistrationNumberTF.setText(result.getString("RegistrationNumber"));
-                updateVINnumberTF.setText(result.getString("VIN"));
-                updateMarkTF.setText(result.getString("Mark"));
+                updateDocStartDateTF.setText(result.getString("StartDate"));
+                updateDocExpireDateTF.setText(result.getString("ExpireDate"));
+                updateDocDescriptionTF.setText(result.getString("Description"));
+                docTypeid = result.getInt("DocumentType_idDocumentType");
+                vehicleid = result.getInt("Vehicle_idVehicle");
+            }
+            ResultSet docTypeResult = statement.executeQuery("select * from documentType");
+            while(docTypeResult.next()){
+                if(docTypeResult.getInt("idDocumentType")==docTypeid)
+                    updateDocTypeTF.setText(docTypeResult.getString("Name"));
+            }
+            ResultSet vehicleResult = statement.executeQuery("select * from vehicle");
+            while(vehicleResult.next()){
+                if(vehicleResult.getInt("idVehicle")==vehicleid)
+                    updateDocVehicleTF.setText(vehicleResult.getString("VIN"));
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @FXML
-    public void updateDocumentButtonOnAction(MouseEvent event){
-       /* String productionYear = updateProductionYearTF.getText();
-        String registrationNumber = updateRegistrationNumberTF.getText();
-        String vin = updateVINnumberTF.getText();
+    public void updateDocumentsOnMouseClicked(MouseEvent event){
+        int docTypeId = -1;
+        int vehicleId = -1;
+        String DocType = updateDocTypeTF.getText();
+        String StartDate = updateDocStartDateTF.getText();
+        String ExpireDate = updateDocExpireDateTF.getText();
+        String Description = updateDocDescriptionTF.getText();
+        String vin = updateDocVehicleTF.getText();
         vinValidator = new VinValidator(vin);
-        String mark = updateMarkTF.getText();
-        if(productionYear.isEmpty() == false && registrationNumber.isEmpty() == false && vinValidator.isValid() == true && mark.isEmpty() == false) {
+
+        if(DocType.isEmpty() == false && StartDate.isEmpty() == false && ExpireDate.isEmpty() == false && Description.isEmpty() == false && vinValidator.isValid() == true) {
 
             try {
                 incorrectDataLabel.setVisible(false);
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb",  user, password);
                 Statement statement = connection.createStatement();
 
-                ResultSet result = statement.executeQuery("select * from mark");
-                while(result.next()){
-                    if(result.getString("Name").equals(mark))
-                        vehicleMarkId = result.getInt("idMark");
+                ResultSet docTypResult = statement.executeQuery("select * from documentType");
+                while(docTypResult.next()){
+                    if(docTypResult.getString("Name").equals(DocType))
+                        docTypeId = docTypResult.getInt("idDocumentType");
                 }
 
-                statement.executeUpdate("UPDATE vehicle set productionYear ='"+productionYear+"', registrationNumber ='"+registrationNumber+"', vin ="+vin+", mark ='"+vehicleMarkId+ "' where idVehicle =" + updateVehicleId);
+                ResultSet vahicleResult = statement.executeQuery("select * from vehicle");
+                while(vahicleResult.next()){
+                    if(vahicleResult.getString("VIN").equals(vin))
+                        vehicleId = vahicleResult.getInt("idVehicle");
+                }
+
+                statement.executeUpdate("UPDATE documents set  DocumentType_idDocumentType ="+docTypeId+", ExpireDate ='"+ExpireDate+"', StartDate ='"+StartDate+"', Description ='"+Description+ "', Vehicle_idVehicle = "+ vehicleId +"  where idDocuments =" + updateDocumentId);
                 connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            updateProductionYearTF.clear();
-            updateRegistrationNumberTF.clear();
-            updateVINnumberTF.clear();
-            updateMarkTF.clear();
+            updateDocTypeTF.clear();
+            updateDocStartDateTF.clear();
+            updateDocExpireDateTF.clear();
+            updateDocDescriptionTF.clear();
+            updateDocVehicleTF.clear();
         }
         else incorrectDataLabel.setVisible(true);
-        setUpdateVehicleComboBoxes();*/
+        setUpdateDocumentComboBoxes();
     }
 
     @FXML
     public void updateDocumentCBOnAction(){
-        //setDataDocumentLabels();
+        setDataDocumentLabels();
     }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void setUpdateOwnershipComboBoxes(){
-       /* try {
+        Map<Integer, String> tempVehicles = new HashMap<Integer, String>();
+        Map<Integer, String> tempOwners = new HashMap<Integer, String>();
+        int tmpVehicleId = -1;
+        int tmpOwnerId = -1;
+
+        try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("select * from vehicle");
-            while(result.next())
-                vehicles.put(result.getInt("idVehicle"), result.getString("RegistrationNumber") + ' ' +  result.getString("VIN") + ' ' + result.getString("Mark") + ' ' + result.getString("ProductionYear"));
 
-            updateVehicleCB.getItems().clear();
-            for (int key : vehicles.keySet())
-                updateVehicleCB.getItems().add(vehicles.get(key));
+            ResultSet vahicleResult = statement.executeQuery("select * from vehicle");
+            while(vahicleResult.next()){
+                tempVehicles.put(vahicleResult.getInt("idVehicle"), vahicleResult.getString("VIN"));
+            }
+
+            ResultSet ownerResult = statement.executeQuery("select * from owner");
+            while(ownerResult.next()){
+                tempOwners.put(ownerResult.getInt("idOwner"), ownerResult.getString("Firstname") + ' ' +  ownerResult.getString("Lastname") + " " +ownerResult.getString("Pesel"));
+            }
+
+            ResultSet result = statement.executeQuery("select * from ownership");
+            while(result.next()){
+                String vehicleValue = null;
+                String OwnerValue = null;
+
+                tmpVehicleId = result.getInt("Vehicle_idVehicle");
+                tmpOwnerId = result.getInt("Owner_idOwner");
+
+                for(Map.Entry<Integer, String> e : tempVehicles.entrySet()) {
+                    if(e.getKey() == tmpVehicleId)
+                        vehicleValue = e.getValue();
+                }
+                for(Map.Entry<Integer, String> e : tempOwners.entrySet()) {
+                    if(e.getKey() == tmpOwnerId)
+                        OwnerValue = e.getValue();
+                }
+
+                ownership.put(result.getInt("idOwnership"), vehicleValue + " : " + OwnerValue);
+
+            }
+            updateOwnershipCB.getItems().clear();
+            for (int key : ownership.keySet())
+                updateOwnershipCB.getItems().add(ownership.get(key));
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
 
     public void setDataOwnershipLabels(){
-       /* updateVehicleId = -1;
-        String vehicle = (String)updateVehicleCB.getValue();
-        for(Map.Entry<Integer, String> e : vehicles.entrySet()) {
-            if(e.getValue() == vehicle)
-                updateVehicleId = e.getKey();
+        int Ownerid = -1;
+        int vehicleid = -1;
+        updateOwnershipId = -1;
+        String tmpOwnership = (String)updateOwnershipCB.getValue();
+        for(Map.Entry<Integer, String> e : ownership.entrySet()) {
+            if(e.getValue() == tmpOwnership)
+                updateOwnershipId = e.getKey();
         }
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", user, password);
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("select * from vehicle where vehicle.idVehicle = " + updateVehicleId);
+            ResultSet result = statement.executeQuery("select * from ownership where ownership.idOwnership = " + updateOwnershipId);
             while(result.next()){
-                updateProductionYearTF.setText(result.getString("ProductionYear"));
-                updateRegistrationNumberTF.setText(result.getString("RegistrationNumber"));
-                updateVINnumberTF.setText(result.getString("VIN"));
-                updateMarkTF.setText(result.getString("Mark"));
+                updateStartDateTF.setText(result.getString("StartDate"));
+                Ownerid = result.getInt("Owner_idOwner");
+                vehicleid = result.getInt("Vehicle_idVehicle");
+            }
+            ResultSet ownerResult = statement.executeQuery("select * from owner");
+            while(ownerResult.next()){
+                if(ownerResult.getInt("idOwner")==Ownerid)
+                    updateOwnerTF.setText(ownerResult.getString("PESEL"));
+            }
+            ResultSet vehicleResult = statement.executeQuery("select * from vehicle");
+            while(vehicleResult.next()){
+                if(vehicleResult.getInt("idVehicle")==vehicleid)
+                    updateVehicleTF.setText(vehicleResult.getString("VIN"));
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @FXML
-    public void updateOwnershipButtonOnAction(MouseEvent event){
-       /* String productionYear = updateProductionYearTF.getText();
-        String registrationNumber = updateRegistrationNumberTF.getText();
-        String vin = updateVINnumberTF.getText();
-        vinValidator = new VinValidator(vin);
-        String mark = updateMarkTF.getText();
-        if(productionYear.isEmpty() == false && registrationNumber.isEmpty() == false && vinValidator.isValid() == true && mark.isEmpty() == false) {
+    public void updateOwnershipOnMouseClicked(MouseEvent event){
+        int ownerId = -1;
+        int vehicleId = -1;
+        String owner = updateOwnerTF.getText();
+        String vin = updateVehicleTF.getText();
+        String startDate = updateStartDateTF.getText();
+
+        if(owner.isEmpty() == false && vin.isEmpty() == false && startDate.isEmpty() == false) {
 
             try {
                 incorrectDataLabel.setVisible(false);
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb",  user, password);
                 Statement statement = connection.createStatement();
 
-                ResultSet result = statement.executeQuery("select * from mark");
-                while(result.next()){
-                    if(result.getString("Name").equals(mark))
-                        vehicleMarkId = result.getInt("idMark");
+                ResultSet ownerResult = statement.executeQuery("select * from owner");
+                while(ownerResult.next()){
+                    if(ownerResult.getString("PESEL").equals(owner))
+                        ownerId = ownerResult.getInt("idOwner");
                 }
 
-                statement.executeUpdate("UPDATE vehicle set productionYear ='"+productionYear+"', registrationNumber ='"+registrationNumber+"', vin ="+vin+", mark ='"+vehicleMarkId+ "' where idVehicle =" + updateVehicleId);
+                ResultSet vahicleResult = statement.executeQuery("select * from vehicle");
+                while(vahicleResult.next()){
+                    if(vahicleResult.getString("VIN").equals(vin))
+                        vehicleId = vahicleResult.getInt("idVehicle");
+                }
+
+                statement.executeUpdate("UPDATE ownership set  Vehicle_idVehicle ="+vehicleId+", StartDate ='"+startDate+"', Owner_idOwner = "+ ownerId +"  where idOwnership =" + updateOwnershipId);
                 connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            updateProductionYearTF.clear();
-            updateRegistrationNumberTF.clear();
-            updateVINnumberTF.clear();
-            updateMarkTF.clear();
+            updateOwnerTF.clear();
+            updateVehicleTF.clear();
+            updateStartDateTF.clear();
         }
         else incorrectDataLabel.setVisible(true);
-        setUpdateVehicleComboBoxes();*/
+        setUpdateOwnershipComboBoxes();
     }
 
     @FXML
     public void updateOwnershipCBOnAction(){
-       // setDataOwnershipLabels();
+        setDataOwnershipLabels();
     }
 }

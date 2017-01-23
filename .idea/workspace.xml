@@ -60,57 +60,74 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EnteringDataController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EnteringDataController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controllers/EnteringDataController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            <state relative-caret-position="399">
+              <caret line="779" column="13" selection-start-line="779" selection-start-column="13" selection-end-line="779" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#16165#16166#0" expanded="true" />
-                <element signature="e#16201#16202#0" expanded="true" />
-                <element signature="e#19726#19727#0" expanded="true" />
-                <element signature="e#19764#19765#0" expanded="true" />
-                <marker date="1485122013079" expanded="true" signature="3642:3728" ph="INSERT INTO owner... " />
-                <marker date="1485122013079" expanded="true" signature="4864:4882" ph="select * fro... mark" />
-                <marker date="1485122013079" expanded="true" signature="5176:5273" ph="INSERT INTO vehicle... " />
-                <marker date="1485122013079" expanded="true" signature="7001:7116" ph="INSERT INTO documents... " />
-                <marker date="1485122013079" expanded="true" signature="8662:8748" ph="INSERT INTO ownership... " />
-                <marker date="1485122013079" expanded="true" signature="10922:10948" ph="select * fro... documenttype" />
-                <marker date="1485122013079" expanded="true" signature="11125:11146" ph="select * fro... vehicle" />
-                <marker date="1485122013079" expanded="true" signature="12090:12109" ph="select * fro... owner" />
-                <marker date="1485122013079" expanded="true" signature="12348:12369" ph="select * fro... vehicle" />
-                <marker date="1485122013079" expanded="true" signature="13324:13343" ph="select * fro... owner" />
-                <marker date="1485122013079" expanded="true" signature="14336:14355" ph="select * fro... owner" />
-                <marker date="1485122013079" expanded="true" signature="14336:14377" ph="select * fro... owner" />
-                <marker date="1485122013079" expanded="true" signature="14336:14378" ph="select * fro... owner" />
-                <marker date="1485122013079" expanded="true" signature="14336:14395" ph="select * fro... owner" />
-                <marker date="1485122013079" expanded="true" signature="14336:14396" ph="select * fro... owner" />
-                <marker date="1485122013079" expanded="true" signature="15592:15692" ph="UPDATE owner... " />
-                <marker date="1485122013079" expanded="true" signature="15592:15700" ph="UPDATE owner... " />
-                <marker date="1485122013079" expanded="true" signature="15592:15709" ph="UPDATE owner... " />
-                <marker date="1485122013079" expanded="true" signature="16500:16521" ph="select * fro... vehicle" />
-                <marker date="1485122013079" expanded="true" signature="17517:17564" ph="select * fro... owner" />
-                <marker date="1485122013079" expanded="true" signature="18852:18870" ph="select * fro... mark" />
-                <marker date="1485122013079" expanded="true" signature="19099:19260" ph="UPDATE owner... " />
-                <marker date="1485122013079" expanded="true" signature="20173:20194" ph="select * fro... vehicle" />
-                <marker date="1485122013079" expanded="true" signature="21227:21275" ph="select * fro... vehicle" />
-                <marker date="1485122013079" expanded="true" signature="22568:22586" ph="select * fro... mark" />
-                <marker date="1485122013079" expanded="true" signature="22815:22976" ph="UPDATE vehic... " />
-                <marker date="1485122013079" expanded="true" signature="23907:23928" ph="select * fro... vehicle" />
-                <marker date="1485122013079" expanded="true" signature="24966:25014" ph="select * fro... vehicle" />
-                <marker date="1485122013079" expanded="true" signature="26308:26326" ph="select * fro... mark" />
-                <marker date="1485122013079" expanded="true" signature="26555:26716" ph="UPDATE vehic... " />
+                <element signature="e#20300#20317#0" expanded="true" />
+                <element signature="e#20375#20392#0" expanded="true" />
+                <element signature="e#26308#26309#0" expanded="true" />
+                <element signature="e#26347#26348#0" expanded="true" />
+                <element signature="e#26452#26469#0" expanded="true" />
+                <element signature="e#26526#26543#0" expanded="true" />
+                <element signature="e#31839#31840#0" expanded="true" />
+                <element signature="e#31879#31880#0" expanded="true" />
+                <marker date="1485210822916" expanded="true" signature="3870:3956" ph="INSERT INTO owner... " />
+                <marker date="1485210822916" expanded="true" signature="5092:5110" ph="select * fro... mark" />
+                <marker date="1485210822916" expanded="true" signature="5404:5501" ph="INSERT INTO vehicle... " />
+                <marker date="1485210822916" expanded="true" signature="7229:7344" ph="INSERT INTO documents... " />
+                <marker date="1485210822916" expanded="true" signature="8890:8976" ph="INSERT INTO ownership... " />
+                <marker date="1485210822916" expanded="true" signature="11155:11181" ph="select * fro... documenttype" />
+                <marker date="1485210822916" expanded="true" signature="11358:11379" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="12323:12342" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="12581:12602" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="13557:13576" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="14569:14588" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="14569:14610" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="14569:14611" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="14569:14628" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="14569:14629" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="15825:15925" ph="UPDATE owner... " />
+                <marker date="1485210822916" expanded="true" signature="15825:15933" ph="UPDATE owner... " />
+                <marker date="1485210822916" expanded="true" signature="15825:15942" ph="UPDATE owner... " />
+                <marker date="1485210822916" expanded="true" signature="16733:16754" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="17689:17736" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="18165:18183" ph="select * fro... markmissingValue" />
+                <marker date="1485210822916" expanded="true" signature="19277:19295" ph="select * fro... mark" />
+                <marker date="1485210822916" expanded="true" signature="19523:19690" ph="UPDATE owner... " />
+                <marker date="1485210822916" expanded="true" signature="20717:20738" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="20961:20987" ph="select * fro... documenttype" />
+                <marker date="1485210822916" expanded="true" signature="21208:21231" ph="select * fro... documents" />
+                <marker date="1485210822916" expanded="true" signature="22881:22935" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="23443:23469" ph="select * fro... documentType" />
+                <marker date="1485210822916" expanded="true" signature="23738:23759" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="25012:25038" ph="select * fro... documentType" />
+                <marker date="1485210822916" expanded="true" signature="25317:25338" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="25585:25762" ph="UPDATE docum... " />
+                <marker date="1485210822916" expanded="true" signature="25585:25798" ph="UPDATE vehic... " />
+                <marker date="1485210822916" expanded="true" signature="26866:26887" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="27108:27127" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="27420:27434" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="27420:27443" ph="select * fro... ownership" />
+                <marker date="1485210822916" expanded="true" signature="29069:29123" ph="select * fro... ownership" />
+                <marker date="1485210822916" expanded="true" signature="29451:29470" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="29723:29744" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="30734:30753" ph="select * fro... owner" />
+                <marker date="1485210822916" expanded="true" signature="31019:31040" ph="select * fro... vehicle" />
+                <marker date="1485210822916" expanded="true" signature="31287:31421" ph="UPDATE owner... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GettingDataController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GettingDataController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/GettingDataController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="396" column="17" selection-start-line="396" selection-start-column="17" selection-end-line="396" selection-end-column="17" />
+            <state relative-caret-position="-1014">
+              <caret line="344" column="0" selection-start-line="344" selection-start-column="0" selection-end-line="344" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1485124756821" expanded="true" signature="2898:2948" ph="SELECT first... owner" />
@@ -130,7 +147,7 @@
       <file leaf-file-name="MainPanelController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/MainPanelController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
+            <state relative-caret-position="323">
               <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -142,7 +159,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="238">
               <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -153,27 +170,27 @@
       </file>
       <file leaf-file-name="MainPanel.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resources/MainPanel.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="340">
               <caret line="20" column="27" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="27" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="EnteringData.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resources/EnteringData.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="85" column="111" selection-start-line="18" selection-start-column="266" selection-end-line="18" selection-end-column="288" />
+            <state relative-caret-position="356">
+              <caret line="216" column="51" selection-start-line="216" selection-start-column="34" selection-end-line="216" selection-end-column="51" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -232,11 +249,11 @@
         <option value="$PROJECT_DIR$/src/resources/Police.fxml" />
         <option value="$PROJECT_DIR$/src/controllers/PoliceController.java" />
         <option value="$PROJECT_DIR$/src/controllers/ForemanController.java" />
-        <option value="$PROJECT_DIR$/src/resources/EnteringData.fxml" />
         <option value="$PROJECT_DIR$/src/resources/MainPanel.fxml" />
         <option value="$PROJECT_DIR$/src/controllers/MainPanelController.java" />
-        <option value="$PROJECT_DIR$/src/controllers/EnteringDataController.java" />
         <option value="$PROJECT_DIR$/src/controllers/GettingDataController.java" />
+        <option value="$PROJECT_DIR$/src/resources/EnteringData.fxml" />
+        <option value="$PROJECT_DIR$/src/controllers/EnteringDataController.java" />
       </list>
     </option>
   </component>
@@ -289,7 +306,7 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -368,7 +385,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -627,6 +644,7 @@
       <setting name="cmdLine" value="run-app" />
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="true" />
+      <setting name="depsClasspath" value="false" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
@@ -792,6 +810,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -886,12 +910,13 @@
       <workItem from="1483962153664" duration="760000" />
       <workItem from="1484000293733" duration="6824000" />
       <workItem from="1484025749033" duration="2261000" />
-      <workItem from="1485098202805" duration="23528000" />
+      <workItem from="1485098202805" duration="24101000" />
+      <workItem from="1485201822406" duration="9014000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57219000" />
+    <option name="totallyTimeSpent" value="66806000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
@@ -904,8 +929,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858709" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21865284" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21865284" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858709" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1000,40 +1025,57 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16165#16166#0" expanded="true" />
-            <element signature="e#16201#16202#0" expanded="true" />
-            <element signature="e#19726#19727#0" expanded="true" />
-            <element signature="e#19764#19765#0" expanded="true" />
-            <marker date="1485122013079" expanded="true" signature="3642:3728" ph="INSERT INTO owner... " />
-            <marker date="1485122013079" expanded="true" signature="4864:4882" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="5176:5273" ph="INSERT INTO vehicle... " />
-            <marker date="1485122013079" expanded="true" signature="7001:7116" ph="INSERT INTO documents... " />
-            <marker date="1485122013079" expanded="true" signature="8662:8748" ph="INSERT INTO ownership... " />
-            <marker date="1485122013079" expanded="true" signature="10922:10948" ph="select * fro... documenttype" />
-            <marker date="1485122013079" expanded="true" signature="11125:11146" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="12090:12109" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="12348:12369" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="13324:13343" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14355" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14377" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14378" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14395" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14396" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="15592:15692" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="15592:15700" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="15592:15709" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="16500:16521" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="17517:17564" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="18852:18870" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="19099:19260" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="20173:20194" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="21227:21275" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="22568:22586" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="22815:22976" ph="UPDATE vehic... " />
-            <marker date="1485122013079" expanded="true" signature="23907:23928" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="24966:25014" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="26308:26326" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="26555:26716" ph="UPDATE vehic... " />
+            <element signature="e#20300#20317#0" expanded="true" />
+            <element signature="e#20375#20392#0" expanded="true" />
+            <element signature="e#26308#26309#0" expanded="true" />
+            <element signature="e#26347#26348#0" expanded="true" />
+            <element signature="e#26452#26469#0" expanded="true" />
+            <element signature="e#26526#26543#0" expanded="true" />
+            <element signature="e#31839#31840#0" expanded="true" />
+            <element signature="e#31879#31880#0" expanded="true" />
+            <marker date="1485210822916" expanded="true" signature="3870:3956" ph="INSERT INTO owner... " />
+            <marker date="1485210822916" expanded="true" signature="5092:5110" ph="select * fro... mark" />
+            <marker date="1485210822916" expanded="true" signature="5404:5501" ph="INSERT INTO vehicle... " />
+            <marker date="1485210822916" expanded="true" signature="7229:7344" ph="INSERT INTO documents... " />
+            <marker date="1485210822916" expanded="true" signature="8890:8976" ph="INSERT INTO ownership... " />
+            <marker date="1485210822916" expanded="true" signature="11155:11181" ph="select * fro... documenttype" />
+            <marker date="1485210822916" expanded="true" signature="11358:11379" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="12323:12342" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="12581:12602" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="13557:13576" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14588" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14610" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14611" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14628" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14629" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="15825:15925" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="15825:15933" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="15825:15942" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="16733:16754" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="17689:17736" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="18165:18183" ph="select * fro... markmissingValue" />
+            <marker date="1485210822916" expanded="true" signature="19277:19295" ph="select * fro... mark" />
+            <marker date="1485210822916" expanded="true" signature="19523:19690" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="20717:20738" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="20961:20987" ph="select * fro... documenttype" />
+            <marker date="1485210822916" expanded="true" signature="21208:21231" ph="select * fro... documents" />
+            <marker date="1485210822916" expanded="true" signature="22881:22935" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="23443:23469" ph="select * fro... documentType" />
+            <marker date="1485210822916" expanded="true" signature="23738:23759" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="25012:25038" ph="select * fro... documentType" />
+            <marker date="1485210822916" expanded="true" signature="25317:25338" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="25585:25762" ph="UPDATE docum... " />
+            <marker date="1485210822916" expanded="true" signature="25585:25798" ph="UPDATE vehic... " />
+            <marker date="1485210822916" expanded="true" signature="26866:26887" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="27108:27127" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="27420:27434" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="27420:27443" ph="select * fro... ownership" />
+            <marker date="1485210822916" expanded="true" signature="29069:29123" ph="select * fro... ownership" />
+            <marker date="1485210822916" expanded="true" signature="29451:29470" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="29723:29744" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="30734:30753" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="31019:31040" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="31287:31421" ph="UPDATE owner... " />
           </folding>
         </state>
       </provider>
@@ -1079,40 +1121,57 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16165#16166#0" expanded="true" />
-            <element signature="e#16201#16202#0" expanded="true" />
-            <element signature="e#19726#19727#0" expanded="true" />
-            <element signature="e#19764#19765#0" expanded="true" />
-            <marker date="1485122013079" expanded="true" signature="3642:3728" ph="INSERT INTO owner... " />
-            <marker date="1485122013079" expanded="true" signature="4864:4882" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="5176:5273" ph="INSERT INTO vehicle... " />
-            <marker date="1485122013079" expanded="true" signature="7001:7116" ph="INSERT INTO documents... " />
-            <marker date="1485122013079" expanded="true" signature="8662:8748" ph="INSERT INTO ownership... " />
-            <marker date="1485122013079" expanded="true" signature="10922:10948" ph="select * fro... documenttype" />
-            <marker date="1485122013079" expanded="true" signature="11125:11146" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="12090:12109" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="12348:12369" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="13324:13343" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14355" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14377" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14378" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14395" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14396" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="15592:15692" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="15592:15700" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="15592:15709" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="16500:16521" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="17517:17564" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="18852:18870" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="19099:19260" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="20173:20194" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="21227:21275" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="22568:22586" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="22815:22976" ph="UPDATE vehic... " />
-            <marker date="1485122013079" expanded="true" signature="23907:23928" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="24966:25014" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="26308:26326" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="26555:26716" ph="UPDATE vehic... " />
+            <element signature="e#20300#20317#0" expanded="true" />
+            <element signature="e#20375#20392#0" expanded="true" />
+            <element signature="e#26308#26309#0" expanded="true" />
+            <element signature="e#26347#26348#0" expanded="true" />
+            <element signature="e#26452#26469#0" expanded="true" />
+            <element signature="e#26526#26543#0" expanded="true" />
+            <element signature="e#31839#31840#0" expanded="true" />
+            <element signature="e#31879#31880#0" expanded="true" />
+            <marker date="1485210822916" expanded="true" signature="3870:3956" ph="INSERT INTO owner... " />
+            <marker date="1485210822916" expanded="true" signature="5092:5110" ph="select * fro... mark" />
+            <marker date="1485210822916" expanded="true" signature="5404:5501" ph="INSERT INTO vehicle... " />
+            <marker date="1485210822916" expanded="true" signature="7229:7344" ph="INSERT INTO documents... " />
+            <marker date="1485210822916" expanded="true" signature="8890:8976" ph="INSERT INTO ownership... " />
+            <marker date="1485210822916" expanded="true" signature="11155:11181" ph="select * fro... documenttype" />
+            <marker date="1485210822916" expanded="true" signature="11358:11379" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="12323:12342" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="12581:12602" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="13557:13576" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14588" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14610" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14611" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14628" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14629" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="15825:15925" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="15825:15933" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="15825:15942" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="16733:16754" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="17689:17736" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="18165:18183" ph="select * fro... markmissingValue" />
+            <marker date="1485210822916" expanded="true" signature="19277:19295" ph="select * fro... mark" />
+            <marker date="1485210822916" expanded="true" signature="19523:19690" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="20717:20738" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="20961:20987" ph="select * fro... documenttype" />
+            <marker date="1485210822916" expanded="true" signature="21208:21231" ph="select * fro... documents" />
+            <marker date="1485210822916" expanded="true" signature="22881:22935" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="23443:23469" ph="select * fro... documentType" />
+            <marker date="1485210822916" expanded="true" signature="23738:23759" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="25012:25038" ph="select * fro... documentType" />
+            <marker date="1485210822916" expanded="true" signature="25317:25338" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="25585:25762" ph="UPDATE docum... " />
+            <marker date="1485210822916" expanded="true" signature="25585:25798" ph="UPDATE vehic... " />
+            <marker date="1485210822916" expanded="true" signature="26866:26887" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="27108:27127" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="27420:27434" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="27420:27443" ph="select * fro... ownership" />
+            <marker date="1485210822916" expanded="true" signature="29069:29123" ph="select * fro... ownership" />
+            <marker date="1485210822916" expanded="true" signature="29451:29470" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="29723:29744" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="30734:30753" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="31019:31040" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="31287:31421" ph="UPDATE owner... " />
           </folding>
         </state>
       </provider>
@@ -1158,40 +1217,57 @@
           <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16165#16166#0" expanded="true" />
-            <element signature="e#16201#16202#0" expanded="true" />
-            <element signature="e#19726#19727#0" expanded="true" />
-            <element signature="e#19764#19765#0" expanded="true" />
-            <marker date="1485122013079" expanded="true" signature="3642:3728" ph="INSERT INTO owner... " />
-            <marker date="1485122013079" expanded="true" signature="4864:4882" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="5176:5273" ph="INSERT INTO vehicle... " />
-            <marker date="1485122013079" expanded="true" signature="7001:7116" ph="INSERT INTO documents... " />
-            <marker date="1485122013079" expanded="true" signature="8662:8748" ph="INSERT INTO ownership... " />
-            <marker date="1485122013079" expanded="true" signature="10922:10948" ph="select * fro... documenttype" />
-            <marker date="1485122013079" expanded="true" signature="11125:11146" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="12090:12109" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="12348:12369" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="13324:13343" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14355" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14377" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14378" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14395" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14396" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="15592:15692" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="15592:15700" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="15592:15709" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="16500:16521" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="17517:17564" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="18852:18870" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="19099:19260" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="20173:20194" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="21227:21275" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="22568:22586" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="22815:22976" ph="UPDATE vehic... " />
-            <marker date="1485122013079" expanded="true" signature="23907:23928" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="24966:25014" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="26308:26326" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="26555:26716" ph="UPDATE vehic... " />
+            <element signature="e#20300#20317#0" expanded="true" />
+            <element signature="e#20375#20392#0" expanded="true" />
+            <element signature="e#26308#26309#0" expanded="true" />
+            <element signature="e#26347#26348#0" expanded="true" />
+            <element signature="e#26452#26469#0" expanded="true" />
+            <element signature="e#26526#26543#0" expanded="true" />
+            <element signature="e#31839#31840#0" expanded="true" />
+            <element signature="e#31879#31880#0" expanded="true" />
+            <marker date="1485210822916" expanded="true" signature="3870:3956" ph="INSERT INTO owner... " />
+            <marker date="1485210822916" expanded="true" signature="5092:5110" ph="select * fro... mark" />
+            <marker date="1485210822916" expanded="true" signature="5404:5501" ph="INSERT INTO vehicle... " />
+            <marker date="1485210822916" expanded="true" signature="7229:7344" ph="INSERT INTO documents... " />
+            <marker date="1485210822916" expanded="true" signature="8890:8976" ph="INSERT INTO ownership... " />
+            <marker date="1485210822916" expanded="true" signature="11155:11181" ph="select * fro... documenttype" />
+            <marker date="1485210822916" expanded="true" signature="11358:11379" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="12323:12342" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="12581:12602" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="13557:13576" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14588" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14610" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14611" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14628" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14629" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="15825:15925" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="15825:15933" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="15825:15942" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="16733:16754" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="17689:17736" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="18165:18183" ph="select * fro... markmissingValue" />
+            <marker date="1485210822916" expanded="true" signature="19277:19295" ph="select * fro... mark" />
+            <marker date="1485210822916" expanded="true" signature="19523:19690" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="20717:20738" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="20961:20987" ph="select * fro... documenttype" />
+            <marker date="1485210822916" expanded="true" signature="21208:21231" ph="select * fro... documents" />
+            <marker date="1485210822916" expanded="true" signature="22881:22935" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="23443:23469" ph="select * fro... documentType" />
+            <marker date="1485210822916" expanded="true" signature="23738:23759" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="25012:25038" ph="select * fro... documentType" />
+            <marker date="1485210822916" expanded="true" signature="25317:25338" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="25585:25762" ph="UPDATE docum... " />
+            <marker date="1485210822916" expanded="true" signature="25585:25798" ph="UPDATE vehic... " />
+            <marker date="1485210822916" expanded="true" signature="26866:26887" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="27108:27127" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="27420:27434" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="27420:27443" ph="select * fro... ownership" />
+            <marker date="1485210822916" expanded="true" signature="29069:29123" ph="select * fro... ownership" />
+            <marker date="1485210822916" expanded="true" signature="29451:29470" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="29723:29744" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="30734:30753" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="31019:31040" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="31287:31421" ph="UPDATE owner... " />
           </folding>
         </state>
       </provider>
@@ -1297,10 +1373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#5524#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1308,10 +1380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#5919#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1361,9 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="351" column="0" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
-          <folding>
-            <element signature="e#13449#13450#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1371,9 +1436,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#1171#1172#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1381,16 +1443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="2514" column="0" selection-start-line="2514" selection-start-column="0" selection-end-line="2514" selection-end-column="0" />
-          <folding>
-            <element signature="e#71768#71776#0" expanded="false" />
-            <element signature="e#71835#71853#0" expanded="false" />
-            <element signature="e#81787#81788#0" expanded="false" />
-            <element signature="e#81827#81828#0" expanded="false" />
-            <element signature="e#82173#82174#0" expanded="false" />
-            <element signature="e#82215#82216#0" expanded="false" />
-            <element signature="e#85050#85051#0" expanded="false" />
-            <element signature="e#85102#85103#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1399,26 +1451,15 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="340">
           <caret line="20" column="27" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/EnteringData.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="85" column="111" selection-start-line="18" selection-start-column="266" selection-end-line="18" selection-end-column="288" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="238">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1428,7 +1469,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/MainPanelController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
+        <state relative-caret-position="323">
           <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1436,54 +1477,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/EnteringDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#16165#16166#0" expanded="true" />
-            <element signature="e#16201#16202#0" expanded="true" />
-            <element signature="e#19726#19727#0" expanded="true" />
-            <element signature="e#19764#19765#0" expanded="true" />
-            <marker date="1485122013079" expanded="true" signature="3642:3728" ph="INSERT INTO owner... " />
-            <marker date="1485122013079" expanded="true" signature="4864:4882" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="5176:5273" ph="INSERT INTO vehicle... " />
-            <marker date="1485122013079" expanded="true" signature="7001:7116" ph="INSERT INTO documents... " />
-            <marker date="1485122013079" expanded="true" signature="8662:8748" ph="INSERT INTO ownership... " />
-            <marker date="1485122013079" expanded="true" signature="10922:10948" ph="select * fro... documenttype" />
-            <marker date="1485122013079" expanded="true" signature="11125:11146" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="12090:12109" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="12348:12369" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="13324:13343" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14355" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14377" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14378" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14395" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="14336:14396" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="15592:15692" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="15592:15700" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="15592:15709" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="16500:16521" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="17517:17564" ph="select * fro... owner" />
-            <marker date="1485122013079" expanded="true" signature="18852:18870" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="19099:19260" ph="UPDATE owner... " />
-            <marker date="1485122013079" expanded="true" signature="20173:20194" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="21227:21275" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="22568:22586" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="22815:22976" ph="UPDATE vehic... " />
-            <marker date="1485122013079" expanded="true" signature="23907:23928" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="24966:25014" ph="select * fro... vehicle" />
-            <marker date="1485122013079" expanded="true" signature="26308:26326" ph="select * fro... mark" />
-            <marker date="1485122013079" expanded="true" signature="26555:26716" ph="UPDATE vehic... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/GettingDataController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="396" column="17" selection-start-line="396" selection-start-column="17" selection-end-line="396" selection-end-column="17" />
+        <state relative-caret-position="-1014">
+          <caret line="344" column="0" selection-start-line="344" selection-start-column="0" selection-end-line="344" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1485124756821" expanded="true" signature="2898:2948" ph="SELECT first... owner" />
@@ -1495,6 +1492,78 @@
             <marker date="1485124756821" expanded="true" signature="16430:16824" ph="SELECT dt.Na... documents_history" />
             <marker date="1485124756821" expanded="true" signature="18819:18826" ph="SELECT first... owner_history" />
             <marker date="1485124756821" expanded="true" signature="18819:19106" ph="SELECT o.las... ownership" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/EnteringData.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="216" column="51" selection-start-line="216" selection-start-column="34" selection-end-line="216" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/EnteringDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="779" column="13" selection-start-line="779" selection-start-column="13" selection-end-line="779" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#20300#20317#0" expanded="true" />
+            <element signature="e#20375#20392#0" expanded="true" />
+            <element signature="e#26308#26309#0" expanded="true" />
+            <element signature="e#26347#26348#0" expanded="true" />
+            <element signature="e#26452#26469#0" expanded="true" />
+            <element signature="e#26526#26543#0" expanded="true" />
+            <element signature="e#31839#31840#0" expanded="true" />
+            <element signature="e#31879#31880#0" expanded="true" />
+            <marker date="1485210822916" expanded="true" signature="3870:3956" ph="INSERT INTO owner... " />
+            <marker date="1485210822916" expanded="true" signature="5092:5110" ph="select * fro... mark" />
+            <marker date="1485210822916" expanded="true" signature="5404:5501" ph="INSERT INTO vehicle... " />
+            <marker date="1485210822916" expanded="true" signature="7229:7344" ph="INSERT INTO documents... " />
+            <marker date="1485210822916" expanded="true" signature="8890:8976" ph="INSERT INTO ownership... " />
+            <marker date="1485210822916" expanded="true" signature="11155:11181" ph="select * fro... documenttype" />
+            <marker date="1485210822916" expanded="true" signature="11358:11379" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="12323:12342" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="12581:12602" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="13557:13576" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14588" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14610" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14611" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14628" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="14569:14629" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="15825:15925" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="15825:15933" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="15825:15942" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="16733:16754" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="17689:17736" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="18165:18183" ph="select * fro... markmissingValue" />
+            <marker date="1485210822916" expanded="true" signature="19277:19295" ph="select * fro... mark" />
+            <marker date="1485210822916" expanded="true" signature="19523:19690" ph="UPDATE owner... " />
+            <marker date="1485210822916" expanded="true" signature="20717:20738" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="20961:20987" ph="select * fro... documenttype" />
+            <marker date="1485210822916" expanded="true" signature="21208:21231" ph="select * fro... documents" />
+            <marker date="1485210822916" expanded="true" signature="22881:22935" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="23443:23469" ph="select * fro... documentType" />
+            <marker date="1485210822916" expanded="true" signature="23738:23759" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="25012:25038" ph="select * fro... documentType" />
+            <marker date="1485210822916" expanded="true" signature="25317:25338" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="25585:25762" ph="UPDATE docum... " />
+            <marker date="1485210822916" expanded="true" signature="25585:25798" ph="UPDATE vehic... " />
+            <marker date="1485210822916" expanded="true" signature="26866:26887" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="27108:27127" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="27420:27434" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="27420:27443" ph="select * fro... ownership" />
+            <marker date="1485210822916" expanded="true" signature="29069:29123" ph="select * fro... ownership" />
+            <marker date="1485210822916" expanded="true" signature="29451:29470" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="29723:29744" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="30734:30753" ph="select * fro... owner" />
+            <marker date="1485210822916" expanded="true" signature="31019:31040" ph="select * fro... vehicle" />
+            <marker date="1485210822916" expanded="true" signature="31287:31421" ph="UPDATE owner... " />
           </folding>
         </state>
       </provider>
